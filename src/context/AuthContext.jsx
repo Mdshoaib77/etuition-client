@@ -1,0 +1,83 @@
+// import React from 'react'
+// import ReactDOM from 'react-dom/client'
+// import './index.css'
+// import { RouterProvider } from 'react-router-dom'
+// import { router } from './routes/Router'
+// import AuthProvider from './context/AuthContext' // Check this import path
+
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//   <React.StrictMode>
+//     <AuthProvider>
+//        <RouterProvider router={router} />
+//     </AuthProvider>
+//   </React.StrictMode>,
+// )
+
+import { createContext, useEffect, useState } from "react";
+import { 
+    getAuth, 
+    onAuthStateChanged, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    signInWithPopup, 
+    GoogleAuthProvider, 
+    signOut, 
+    updateProfile 
+} from "firebase/auth";
+import { app } from "../firebase/firebase.config";
+
+export const AuthContext = createContext(null);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
+const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [role, setRole] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const createUser = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
+
+    const signIn = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    };
+
+    const googleSignIn = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
+    };
+
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    };
+
+    const updateUserProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo
+        });
+    };
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            // Database integration er por role set kora hobe
+            setLoading(false);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    const authInfo = { user, role, setRole, loading, createUser, signIn, googleSignIn, logOut, updateUserProfile };
+
+    return (
+        <AuthContext.Provider value={authInfo}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
+
+export default AuthProvider;
