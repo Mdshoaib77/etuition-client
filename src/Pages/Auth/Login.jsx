@@ -254,12 +254,127 @@
 // export default Login;
 
 
+// import React, { useState } from "react";
+// import { useForm } from "react-hook-form";
+// import { Link } from "react-router-dom";
+
+// const Login = () => {
+//   const [success, setSuccess] = useState("");
+
+//   const {
+//     register,
+//     handleSubmit,
+//     reset,
+//     formState: { errors },
+//   } = useForm();
+
+//   const onSubmit = (data) => {
+//     console.log("✅ Login Data:", data);
+
+//     setSuccess("🎉 Login Successful!");
+//     reset();
+//   };
+
+//   return (
+//     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-400 to-red-400">
+//       <div className="bg-white w-full max-w-md p-8 rounded-xl shadow-2xl">
+//         <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-2">
+//           Welcome Back
+//         </h1>
+//         <p className="text-center text-gray-500 mb-6">
+//           Login to your account
+//         </p>
+
+//         {/* Success Message */}
+//         {success && (
+//           <div className="mb-4 text-center text-green-600 font-semibold bg-green-100 py-2 rounded">
+//             {success}
+//           </div>
+//         )}
+
+//         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+
+//           {/* Email */}
+//           <div>
+//             <input
+//               type="email"
+//               placeholder="Email Address"
+//               {...register("email", {
+//                 required: "Email is required",
+//                 pattern: {
+//                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+//                   message: "Enter a valid email address",
+//                 },
+//               })}
+//               className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
+//             />
+//             {errors.email && (
+//               <p className="text-red-500 text-sm mt-1">
+//                 {errors.email.message}
+//               </p>
+//             )}
+//           </div>
+
+//           {/* Password */}
+//           <div>
+//             <input
+//               type="password"
+//               placeholder="Password"
+//               {...register("password", {
+//                 required: "Password is required",
+//                 pattern: {
+//                   value:
+//                     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+//                   message:
+//                     "Password must be 8+ chars, include uppercase, lowercase, number & special character",
+//                 },
+//               })}
+//               className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
+//             />
+//             {errors.password && (
+//               <p className="text-red-500 text-sm mt-1">
+//                 {errors.password.message}
+//               </p>
+//             )}
+//           </div>
+
+//           {/* Button */}
+//           <button
+//             type="submit"
+//             className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition"
+//           >
+//             Login
+//           </button>
+//         </form>
+
+//         <p className="text-center mt-6 text-gray-600">
+//           Don't have an account?{" "}
+//           <Link
+//             to="/register"
+//             className="text-purple-500 font-semibold hover:underline"
+//           >
+//             Register
+//           </Link>
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth"; // Ensure path correct
 
 const Login = () => {
+  const { loginUser } = useAuth();
+  const navigate = useNavigate();
+
   const [success, setSuccess] = useState("");
+  const [authError, setAuthError] = useState("");
 
   const {
     register,
@@ -269,10 +384,27 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("✅ Login Data:", data);
+    setAuthError("");
+    setSuccess("");
 
-    setSuccess("🎉 Login Successful!");
-    reset();
+    console.log("📌 Login Data:", data);
+
+    // Firebase login
+    loginUser(data.email, data.password)
+      .then((result) => {
+        console.log("✅ Firebase Logged in User:", result.user);
+        setSuccess("🎉 Login Successful!");
+        reset();
+
+        // Navigate after login (e.g., to dashboard)
+        setTimeout(() => {
+          navigate("/dashboard"); // change route as needed
+        }, 1500);
+      })
+      .catch((error) => {
+        console.error("❌ Login Error:", error.message);
+        setAuthError("Invalid email or password!"); // Friendly message
+      });
   };
 
   return (
@@ -281,62 +413,56 @@ const Login = () => {
         <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-2">
           Welcome Back
         </h1>
-        <p className="text-center text-gray-500 mb-6">
-          Login to your account
-        </p>
+        <p className="text-center text-gray-500 mb-6">Login to your account</p>
 
         {/* Success Message */}
         {success && (
-          <div className="mb-4 text-center text-green-600 font-semibold bg-green-100 py-2 rounded">
+          <p className="text-green-600 text-center mb-4 font-semibold">
             {success}
-          </div>
+          </p>
+        )}
+
+        {/* Error Message */}
+        {authError && (
+          <p className="text-red-500 text-center mb-4 text-sm">{authError}</p>
         )}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-
           {/* Email */}
-          <div>
-            <input
-              type="email"
-              placeholder="Email Address"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Enter a valid email address",
-                },
-              })}
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
+          <input
+            type="email"
+            placeholder="Email Address"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email address",
+              },
+            })}
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
 
           {/* Password */}
-          <div>
-            <input
-              type="password"
-              placeholder="Password"
-              {...register("password", {
-                required: "Password is required",
-                pattern: {
-                  value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                  message:
-                    "Password must be 8+ chars, include uppercase, lowercase, number & special character",
-                },
-              })}
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
-            />
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.password.message}
-              </p>
-            )}
-          </div>
+          <input
+            type="password"
+            placeholder="Password"
+            {...register("password", {
+              required: "Password is required",
+              pattern: {
+                value:
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                message:
+                  "Password must be 8+ chars, include uppercase, lowercase, number & special char",
+              },
+            })}
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password.message}</p>
+          )}
 
           {/* Button */}
           <button
@@ -350,7 +476,7 @@ const Login = () => {
         <p className="text-center mt-6 text-gray-600">
           Don't have an account?{" "}
           <Link
-            to="/auth/register"
+            to="/register"
             className="text-purple-500 font-semibold hover:underline"
           >
             Register
