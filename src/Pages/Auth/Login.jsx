@@ -1,484 +1,82 @@
-// // // // // // import React from 'react'
-
-// // // // // // const Login = () => {
-// // // // // //   return (
-// // // // // //     <div>
-// // // // // //       <h1>Alhamdulliah Login </h1>
-// // // // // //     </div>
-// // // // // //   )
-// // // // // // }
-
-// // // // // // export default Login
-
-
-// // // // // import React from 'react';
-
-// // // // // const Login = () => {
-// // // // //   return (
-// // // // //     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-// // // // //       <div className="max-w-md w-full p-6 bg-white rounded shadow">
-// // // // //         <h1 className="text-2xl font-bold mb-4 text-center">Alhamdulliah Login</h1>
-// // // // //         {/* Form fields add koro ekhane */}
-// // // // //       </div>
-// // // // //     </div>
-// // // // //   )
-// // // // // }
-
-// // // // // export default Login;
-
-
-// // // // import React from "react";
-
-// // // // const Login = () => {
-// // // //   return (
-// // // //     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-// // // //       <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-md">
-// // // //         <h1 className="text-3xl font-bold text-center mb-6">Login</h1>
-// // // //         <form className="space-y-4">
-// // // //           <div>
-// // // //             <label className="block text-gray-700 font-medium mb-1">Email</label>
-// // // //             <input
-// // // //               type="email"
-// // // //               placeholder="Enter your email"
-// // // //               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-// // // //             />
-// // // //           </div>
-// // // //           <div>
-// // // //             <label className="block text-gray-700 font-medium mb-1">Password</label>
-// // // //             <input
-// // // //               type="password"
-// // // //               placeholder="Enter your password"
-// // // //               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-// // // //             />
-// // // //           </div>
-// // // //           <button
-// // // //             type="submit"
-// // // //             className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
-// // // //           >
-// // // //             Login
-// // // //           </button>
-// // // //         </form>
-// // // //         <p className="text-center text-gray-500 mt-4">
-// // // //           Don't have an account?{" "}
-// // // //           <a href="/auth/register" className="text-blue-500 hover:underline">
-// // // //             Register
-// // // //           </a>
-// // // //         </p>
-// // // //       </div>
-// // // //     </div>
-// // // //   );
-// // // // };
-
-// // // // export default Login;
-
-
-// // // import React from "react";
-// // // import { useForm } from "react-hook-form";
-// // // import { Link } from "react-router-dom";
-
-// // // const Login = () => {
-// // //   const { register, handleSubmit, formState: { errors } } = useForm();
-
-// // //   const onSubmit = (data) => {
-// // //     console.log("Login Data:", data);
-// // //     // Here you can connect Firebase Auth or your backend API
-// // //   };
-
-// // //   return (
-// // //     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-// // //       <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-md">
-// // //         <h1 className="text-3xl font-bold text-center mb-6">Login</h1>
-// // //         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-// // //           <div>
-// // //             <label className="block text-gray-700 font-medium mb-1">Email</label>
-// // //             <input
-// // //               type="email"
-// // //               placeholder="Enter your email"
-// // //               {...register("email", { required: "Email is required" })}
-// // //               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-// // //             />
-// // //             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-// // //           </div>
-
-// // //           <div>
-// // //             <label className="block text-gray-700 font-medium mb-1">Password</label>
-// // //             <input
-// // //               type="password"
-// // //               placeholder="Enter your password"
-// // //               {...register("password", { required: "Password is required", minLength: 6 })}
-// // //               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-// // //             />
-// // //             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
-// // //           </div>
-
-// // //           <button
-// // //             type="submit"
-// // //             className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
-// // //           >
-// // //             Login
-// // //           </button>
-// // //         </form>
-// // //         <p className="text-center text-gray-500 mt-4">
-// // //           Don't have an account?{" "}
-// // //           <Link to="/auth/register" className="text-blue-500 hover:underline">
-// // //             Register
-// // //           </Link>
-// // //         </p>
-// // //       </div>
-// // //     </div>
-// // //   );
-// // // };
-
-// // // export default Login;
-
-
-
-// // import React from "react";
-// // import { useForm } from "react-hook-form";
-// // import { Link } from "react-router-dom";
-
-// // const Login = () => {
-// //   const { register, handleSubmit, formState: { errors } } = useForm();
-
-// //   const onSubmit = (data) => {
-// //     console.log("Login Data:", data);
-// //     // Here you can connect Firebase Auth or your backend API
-// //   };
-
-// //   return (
-// //     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-// //       <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-md">
-// //         <h1 className="text-3xl font-bold text-center mb-6">Login</h1>
-// //         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-// //           <div>
-// //             <label className="block text-gray-700 font-medium mb-1">Email</label>
-// //             <input
-// //               type="email"
-// //               placeholder="Enter your email"
-// //               {...register("email", { required: "Email is required" })}
-// //               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-// //             />
-// //             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-// //           </div>
-
-// //           <div>
-// //             <label className="block text-gray-700 font-medium mb-1">Password</label>
-// //             <input
-// //               type="password"
-// //               placeholder="Enter your password"
-// //               {...register("password", { required: "Password is required", minLength: 6 })}
-// //               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-// //             />
-// //             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
-// //           </div>
-
-// //           <button
-// //             type="submit"
-// //             className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
-// //           >
-// //             Login
-// //           </button>
-// //         </form>
-// //         <p className="text-center text-gray-500 mt-4">
-// //           Don't have an account?{" "}
-// //           <Link to="/auth/register" className="text-blue-500 hover:underline">
-// //             Register
-// //           </Link>
-// //         </p>
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default Login;
-
-
-// // import React from "react";
-// // import { useForm } from "react-hook-form";
-// // import { Link } from "react-router-dom";
-
-// // const Login = () => {
-// //   const { register, handleSubmit, formState: { errors } } = useForm();
-
-// //   const onSubmit = (data) => {
-// //     console.log("Login Data:", data);
-// //     // Add Firebase or API login here
-// //   };
-
-// //   return (
-// //     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-400 to-red-400">
-// //       <div className="bg-white w-full max-w-md p-8 rounded-xl shadow-2xl">
-// //         <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-6">Welcome Back</h1>
-// //         <p className="text-center text-gray-500 mb-6">Login to your account</p>
-
-// //         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-// //           <div>
-// //             <input
-// //               type="email"
-// //               placeholder="Email Address"
-// //               {...register("email", { required: "Email is required" })}
-// //               className="w-full px-4 py-3 border rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-// //             />
-// //             {errors.email && <p className="text-red-500 mt-1 text-sm">{errors.email.message}</p>}
-// //           </div>
-
-// //           <div>
-// //             <input
-// //               type="password"
-// //               placeholder="Password"
-// //               {...register("password", { required: "Password is required", minLength: 6 })}
-// //               className="w-full px-4 py-3 border rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-// //             />
-// //             {errors.password && <p className="text-red-500 mt-1 text-sm">{errors.password.message}</p>}
-// //           </div>
-
-// //           <button
-// //             type="submit"
-// //             className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg shadow-lg hover:from-purple-600 hover:to-pink-600 transition"
-// //           >
-// //             Login
-// //           </button>
-// //         </form>
-
-// //         <p className="text-center mt-6 text-gray-600">
-// //           Don't have an account?{" "}
-// //           <Link to="/register" className="text-purple-500 font-semibold hover:underline">
-// //             Register
-// //           </Link>
-// //         </p>
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default Login;
-
-
-// // import React, { useState } from "react";
-// // import { useForm } from "react-hook-form";
-// // import { Link } from "react-router-dom";
-
-// // const Login = () => {
-// //   const [success, setSuccess] = useState("");
-
-// //   const {
-// //     register,
-// //     handleSubmit,
-// //     reset,
-// //     formState: { errors },
-// //   } = useForm();
-
-// //   const onSubmit = (data) => {
-// //     console.log("✅ Login Data:", data);
-
-// //     setSuccess("🎉 Login Successful!");
-// //     reset();
-// //   };
-
-// //   return (
-// //     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-400 to-red-400">
-// //       <div className="bg-white w-full max-w-md p-8 rounded-xl shadow-2xl">
-// //         <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-2">
-// //           Welcome Back
-// //         </h1>
-// //         <p className="text-center text-gray-500 mb-6">
-// //           Login to your account
-// //         </p>
-
-// //         {/* Success Message */}
-// //         {success && (
-// //           <div className="mb-4 text-center text-green-600 font-semibold bg-green-100 py-2 rounded">
-// //             {success}
-// //           </div>
-// //         )}
-
-// //         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-
-// //           {/* Email */}
-// //           <div>
-// //             <input
-// //               type="email"
-// //               placeholder="Email Address"
-// //               {...register("email", {
-// //                 required: "Email is required",
-// //                 pattern: {
-// //                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-// //                   message: "Enter a valid email address",
-// //                 },
-// //               })}
-// //               className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
-// //             />
-// //             {errors.email && (
-// //               <p className="text-red-500 text-sm mt-1">
-// //                 {errors.email.message}
-// //               </p>
-// //             )}
-// //           </div>
-
-// //           {/* Password */}
-// //           <div>
-// //             <input
-// //               type="password"
-// //               placeholder="Password"
-// //               {...register("password", {
-// //                 required: "Password is required",
-// //                 pattern: {
-// //                   value:
-// //                     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-// //                   message:
-// //                     "Password must be 8+ chars, include uppercase, lowercase, number & special character",
-// //                 },
-// //               })}
-// //               className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
-// //             />
-// //             {errors.password && (
-// //               <p className="text-red-500 text-sm mt-1">
-// //                 {errors.password.message}
-// //               </p>
-// //             )}
-// //           </div>
-
-// //           {/* Button */}
-// //           <button
-// //             type="submit"
-// //             className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition"
-// //           >
-// //             Login
-// //           </button>
-// //         </form>
-
-// //         <p className="text-center mt-6 text-gray-600">
-// //           Don't have an account?{" "}
-// //           <Link
-// //             to="/register"
-// //             className="text-purple-500 font-semibold hover:underline"
-// //           >
-// //             Register
-// //           </Link>
-// //         </p>
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default Login;
-
-
 // import React, { useState } from "react";
 // import { useForm } from "react-hook-form";
 // import { Link, useNavigate } from "react-router-dom";
-// import useAuth from "../../Hooks/useAuth"; // Ensure path correct
+// import useAuth from "../../Hooks/useAuth";
 
 // const Login = () => {
-//   const { loginUser } = useAuth();
+//   const { loginUser, googleLogin } = useAuth();
 //   const navigate = useNavigate();
 
 //   const [success, setSuccess] = useState("");
 //   const [authError, setAuthError] = useState("");
 
-//   const {
-//     register,
-//     handleSubmit,
-//     reset,
-//     formState: { errors },
-//   } = useForm();
+//   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
 //   const onSubmit = (data) => {
 //     setAuthError("");
 //     setSuccess("");
 
-//     console.log("📌 Login Data:", data);
-
-//     // Firebase login
 //     loginUser(data.email, data.password)
-//       .then((result) => {
-//         console.log("✅ Firebase Logged in User:", result.user);
+//       .then(() => {
 //         setSuccess("🎉 Login Successful!");
 //         reset();
-
-//         // Navigate after login (e.g., to dashboard)
-//         setTimeout(() => {
-//           navigate("/dashboard"); // change route as needed
-//         }, 1500);
+//         setTimeout(() => navigate("/dashboard"), 1000);
 //       })
-//       .catch((error) => {
-//         console.error("❌ Login Error:", error.message);
-//         setAuthError("Invalid email or password!"); // Friendly message
+//       .catch(() => {
+//         setAuthError("Invalid email or password!");
 //       });
+//   };
+
+//   // 🔥 Google login
+//   const handleGoogleLogin = () => {
+//     googleLogin()
+//       .then(() => navigate("/dashboard"))
+//       .catch(() => setAuthError("Google login failed"));
 //   };
 
 //   return (
 //     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-400 to-red-400">
 //       <div className="bg-white w-full max-w-md p-8 rounded-xl shadow-2xl">
-//         <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-2">
-//           Welcome Back
-//         </h1>
-//         <p className="text-center text-gray-500 mb-6">Login to your account</p>
+//         <h1 className="text-4xl font-extrabold text-center mb-6">Welcome Back</h1>
 
-//         {/* Success Message */}
-//         {success && (
-//           <p className="text-green-600 text-center mb-4 font-semibold">
-//             {success}
-//           </p>
-//         )}
-
-//         {/* Error Message */}
-//         {authError && (
-//           <p className="text-red-500 text-center mb-4 text-sm">{authError}</p>
-//         )}
+//         {success && <p className="text-green-600 text-center">{success}</p>}
+//         {authError && <p className="text-red-500 text-center">{authError}</p>}
 
 //         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-//           {/* Email */}
 //           <input
 //             type="email"
-//             placeholder="Email Address"
-//             {...register("email", {
-//               required: "Email is required",
-//               pattern: {
-//                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-//                 message: "Enter a valid email address",
-//               },
-//             })}
-//             className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
+//             placeholder="Email"
+//             {...register("email", { required: true })}
+//             className="w-full px-4 py-3 border rounded-lg"
 //           />
-//           {errors.email && (
-//             <p className="text-red-500 text-sm">{errors.email.message}</p>
-//           )}
 
-//           {/* Password */}
 //           <input
 //             type="password"
 //             placeholder="Password"
-//             {...register("password", {
-//               required: "Password is required",
-//               pattern: {
-//                 value:
-//                   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-//                 message:
-//                   "Password must be 8+ chars, include uppercase, lowercase, number & special char",
-//               },
-//             })}
-//             className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500"
+//             {...register("password", { required: true })}
+//             className="w-full px-4 py-3 border rounded-lg"
 //           />
-//           {errors.password && (
-//             <p className="text-red-500 text-sm">{errors.password.message}</p>
-//           )}
 
-//           {/* Button */}
-//           <button
-//             type="submit"
-//             className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition"
-//           >
+//           <button className="w-full py-3 bg-purple-500 text-white rounded-lg">
 //             Login
 //           </button>
 //         </form>
 
-//         <p className="text-center mt-6 text-gray-600">
+//         {/* 🔥 Google Button */}
+//         <button
+//           onClick={handleGoogleLogin}
+//           className="w-full mt-4 py-3 border rounded-lg flex items-center justify-center gap-2"
+//         >
+//           <img
+//             src="https://www.svgrepo.com/show/475656/google-color.svg"
+//             className="w-5"
+//           />
+//           Continue with Google
+//         </button>
+
+//         <p className="text-center mt-6">
 //           Don't have an account?{" "}
-//           <Link
-//             to="/register"
-//             className="text-purple-500 font-semibold hover:underline"
-//           >
+//           <Link to="/register" className="text-purple-600 font-semibold">
 //             Register
 //           </Link>
 //         </p>
@@ -488,7 +86,6 @@
 // };
 
 // export default Login;
-
 
 
 import React, { useState } from "react";
@@ -510,10 +107,15 @@ const Login = () => {
     setSuccess("");
 
     loginUser(data.email, data.password)
-      .then(() => {
+      .then((result) => {
+        // 🔥 ব্রাউজার থেকে ওই ইমেইলের এগেইন্সটে সেভ করা রোলটি খুঁজে বের করছি
+        const savedRole = localStorage.getItem(`role_${data.email}`) || "student";
+        
         setSuccess("🎉 Login Successful!");
         reset();
-        setTimeout(() => navigate("/dashboard"), 1000);
+
+        // ✅ এখন ইউজার সরাসরি তার নির্দিষ্ট রোলের ড্যাশবোর্ডে চলে যাবে
+        setTimeout(() => navigate(`/dashboard/${savedRole}`), 1000);
       })
       .catch(() => {
         setAuthError("Invalid email or password!");
@@ -522,8 +124,15 @@ const Login = () => {
 
   // 🔥 Google login
   const handleGoogleLogin = () => {
+    setAuthError("");
     googleLogin()
-      .then(() => navigate("/dashboard"))
+      .then((result) => {
+        const email = result.user.email;
+        const savedRole = localStorage.getItem(`role_${email}`) || "student";
+        
+        setSuccess("🎉 Login Successful!");
+        navigate(`/dashboard/${savedRole}`);
+      })
       .catch(() => setAuthError("Google login failed"));
   };
 
@@ -532,44 +141,53 @@ const Login = () => {
       <div className="bg-white w-full max-w-md p-8 rounded-xl shadow-2xl">
         <h1 className="text-4xl font-extrabold text-center mb-6">Welcome Back</h1>
 
-        {success && <p className="text-green-600 text-center">{success}</p>}
-        {authError && <p className="text-red-500 text-center">{authError}</p>}
+        {success && <p className="text-green-600 text-center mb-4 font-semibold">{success}</p>}
+        {authError && <p className="text-red-500 text-center mb-4 text-sm font-medium">{authError}</p>}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email"
-            {...register("email", { required: true })}
-            className="w-full px-4 py-3 border rounded-lg"
-          />
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              {...register("email", { required: "Email is required" })}
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+            />
+            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+          </div>
 
-          <input
-            type="password"
-            placeholder="Password"
-            {...register("password", { required: true })}
-            className="w-full px-4 py-3 border rounded-lg"
-          />
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              {...register("password", { required: "Password is required" })}
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+            />
+            {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
+          </div>
 
-          <button className="w-full py-3 bg-purple-500 text-white rounded-lg">
+          <button className="w-full py-3 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-lg transition-colors">
             Login
           </button>
         </form>
 
+        <div className="divider my-6 text-gray-400">OR</div>
+
         {/* 🔥 Google Button */}
         <button
           onClick={handleGoogleLogin}
-          className="w-full mt-4 py-3 border rounded-lg flex items-center justify-center gap-2"
+          className="w-full py-3 border border-gray-300 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition-all font-semibold"
         >
           <img
             src="https://www.svgrepo.com/show/475656/google-color.svg"
             className="w-5"
+            alt="Google icon"
           />
           Continue with Google
         </button>
 
-        <p className="text-center mt-6">
+        <p className="text-center mt-6 text-gray-600">
           Don't have an account?{" "}
-          <Link to="/register" className="text-purple-600 font-semibold">
+          <Link to="/register" className="text-purple-600 font-bold hover:underline">
             Register
           </Link>
         </p>
