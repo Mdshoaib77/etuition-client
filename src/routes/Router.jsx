@@ -634,6 +634,10 @@ import PrivateRoute from "../routes/PrivateRoute";
 import StudentRoute from "../routes/StudentRoute";
 import TutorRoute from "../routes/TutorRoute";
 import AdminRoute from "../routes/AdminRoute";
+import Tutions from "../Pages/Tutions";
+import Tutors from "../Pages/Tutors";
+import About from "../Pages/About";
+import Contact from "../Pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -641,6 +645,11 @@ export const router = createBrowserRouter([
     element: <RootLayouts />,
     children: [
       { index: true, element: <Home /> },
+
+      { path: "tuitions", element: <Tutions/> },
+      { path: "tutors", element: <Tutors/> },
+      { path: "about", element: <About/> },
+      { path: "contact", element: <Contact/> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
     ],

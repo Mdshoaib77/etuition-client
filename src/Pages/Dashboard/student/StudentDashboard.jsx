@@ -61,7 +61,7 @@ const StudentDashboard = () => {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-4">Welcome, Student!</h1>
-      <p className="mb-6">Manage your tuitions, payments, and profile here.</p>
+      {/* <p className="mb-6">Manage your tuitions, payments, and profile here.</p> */}
 
       {/* Nested routes render */}
       <Outlet />
