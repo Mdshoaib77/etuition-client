@@ -134,89 +134,74 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaUserPlus, FaSearchLocation, FaCheckDouble, FaShieldAlt, FaClock, FaHandHoldingHeart } from 'react-icons/fa';
+import { FaShieldAlt, FaClock, FaHandHoldingHeart, FaUserEdit, FaSearchPlus, FaRocket } from 'react-icons/fa';
 
 const ExtraSections = () => {
   return (
     <div className="bg-base-100 overflow-hidden">
       
       {/* 1. How the Platform Works (Visual Step Guide) */}
-      <section className="max-w-7xl mx-auto px-6 py-24 relative">
-        {/* Background Decoration */}
-        <div className="absolute top-0 right-0 -z-10 w-64 h-64 bg-emerald-50 rounded-full blur-3xl opacity-50"></div>
-        
+       <section className="max-w-7xl mx-auto px-6 py-28 relative">
         <div className="text-center mb-20">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-emerald-600 font-bold tracking-widest uppercase text-sm"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="inline-block px-4 py-1.5 mb-4 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-widest"
           >
-            Process
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-gray-900 mt-2"
-          >
-            How it <span className="text-emerald-600">Works</span>
-          </motion.h2>
-          <div className="h-1.5 w-20 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
+            Workflow
+          </motion.div>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">
+            How it <span className="text-emerald-600 italic">Works</span>
+          </h2>
+          <p className="mt-4 text-gray-500 max-w-xl mx-auto text-lg">
+            A seamless bridge between knowledge seekers and expert educators.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          {/* Decorative Connector Line (Visible only on Desktop) */}
-          <div className="hidden md:block absolute top-1/3 left-1/2 -translate-x-1/2 w-2/3 h-[2px] border-t-2 border-dashed border-emerald-200 -z-10"></div>
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
             { 
-              icon: <FaUserPlus />, 
-              step: "01", 
-              title: "Register Account", 
-              desc: "Quick sign-up as a student or tutor to access your personalized dashboard.",
-              color: "text-blue-600",
-              bg: "bg-blue-50"
+              icon: <FaUserEdit />, 
+              title: "Post & Register", 
+              desc: "Students post their tuition needs, while tutors register with their expertise and credentials.",
+              accent: "from-blue-500 to-cyan-400"
             },
             { 
-              icon: <FaSearchLocation />, 
-              step: "02", 
-              title: "Post or Browse", 
-              desc: "Students post requirements, tutors apply for jobs that match their skills.",
-              color: "text-emerald-600",
-              bg: "bg-emerald-50"
+              icon: <FaSearchPlus />, 
+              title: "Apply & Match", 
+              desc: "Qualified tutors browse and apply for tuition posts that fit their teaching style and location.",
+              accent: "from-emerald-500 to-teal-400"
             },
             { 
-              icon: <FaCheckDouble />, 
-              step: "03", 
-              title: "Start Learning", 
-              desc: "Connect safely, finalize details, and begin your educational journey.",
-              color: "text-purple-600",
-              bg: "bg-purple-50"
+              icon: <FaRocket />, 
+              title: "Admin Approval", 
+              desc: "Our team verifies applications to ensure quality. Once approved, the learning journey begins!",
+              accent: "from-orange-500 to-yellow-400"
             }
           ].map((item, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
-              className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-xl shadow-gray-500/5 relative group"
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              className="relative p-10 rounded-[40px] bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 group hover:border-emerald-200 transition-all"
             >
-              <span className="absolute top-6 right-8 text-5xl font-black text-gray-100 group-hover:text-emerald-50 transition-colors">
-                {item.step}
-              </span>
-              <div className={`w-16 h-16 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-inner`}>
+              <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${item.accent} flex items-center justify-center text-white text-3xl mb-8 shadow-lg group-hover:rotate-6 transition-transform`}>
                 {item.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">{item.title}</h3>
-              <p className="text-gray-500 leading-relaxed text-sm md:text-base">
+              <h3 className="text-2xl font-bold mb-4 text-slate-800">{item.title}</h3>
+              <p className="text-gray-600 leading-relaxed">
                 {item.desc}
               </p>
+              <div className="absolute top-10 right-10 text-6xl font-black text-gray-50 -z-10 group-hover:text-emerald-50 transition-colors">
+                0{index + 1}
+              </div>
             </motion.div>
           ))}
         </div>
       </section>
+
 
       {/* 2. Why Choose Us (Modern Feature Section) */}
       <section className="bg-slate-900 py-24 rounded-[3rem] mx-4 mb-12 overflow-hidden relative">
