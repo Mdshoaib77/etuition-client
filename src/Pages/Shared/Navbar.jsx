@@ -439,21 +439,20 @@ const Navbar = () => {
 
   const dashboardLinks = () => {
     if (role === "student") return [
-      { name: "My Dashboard", path: "/dashboard/student/my-tuitions" },
+      { name: "My tuitions", path: "/dashboard/student/my-tuitions" },
       { name: "Post Tuition", path: "/dashboard/student/post-tuition" },
+      { name: "Applied Tuitions", path: "/dashboard/student/applied-tutors" },
       { name: "Profile", path: "/dashboard/student/profile" },
     ];
     if (role === "tutor") return [
-      { name: "My Dashboard", path: "/dashboard/tutor/my-applications" },
+      { name: "My Applications", path: "/dashboard/tutor/my-applications" },
       { name: "Ongoing Tuitions", path: "/dashboard/tutor/ongoing-tuitions" },
-      { name: "Profile", path: "/dashboard/tutor/profile" },
+      { name: "Revenue", path: "/dashboard/tutor/revenue" },
     ];
     if (role === "admin") return [
-      { name: "Admin Home", path: "/dashboard/admin/user-management" },
       { name: "User Management", path: "/dashboard/admin/user-management" },
       { name: "Tuition Management", path: "/dashboard/admin/tuition-management" },
       { name: "Reports", path: "/dashboard/admin/reports" },
-      { name: "Profile", path: "/dashboard/admin/profile" },
     ];
     return [];
   };

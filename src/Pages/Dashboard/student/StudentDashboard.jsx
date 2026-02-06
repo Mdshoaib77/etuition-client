@@ -55,16 +55,49 @@
 // export default StudentDashboard;
 
 
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
+
+// const StudentDashboard = () => {
+//   return (
+//     <div>
+//       <h1 className="text-3xl font-bold mb-4">Welcome, Student!</h1>
+//       {/* <p className="mb-6">Manage your tuitions, payments, and profile here.</p> */}
+
+//       {/* Nested routes render */}
+//       <Outlet />
+//     </div>
+//   );
+// };
+
+// export default StudentDashboard;
+
+
+import { Outlet, useNavigate } from "react-router-dom";
 
 const StudentDashboard = () => {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold mb-4">Welcome, Student!</h1>
-      {/* <p className="mb-6">Manage your tuitions, payments, and profile here.</p> */}
+  const navigate = useNavigate();
 
-      {/* Nested routes render */}
-      <Outlet />
+  return (
+    <div className="min-h-screen bg-gray-100 p-4 md:p-6">
+      {/* Header */}
+      <div className="bg-white rounded-xl shadow-md p-4 md:p-6 mb-6 flex items-center justify-between">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+          Welcome, Student 🎓
+        </h1>
+
+        {/* Mobile Only Home Button */}
+        <button
+          onClick={() => navigate("/")}
+          className="md:hidden px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition text-sm"
+        >
+          🏠 Home
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="bg-white rounded-xl shadow-md p-4 md:p-6">
+        <Outlet />
+      </div>
     </div>
   );
 };
