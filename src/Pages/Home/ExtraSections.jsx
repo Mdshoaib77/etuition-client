@@ -135,6 +135,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaShieldAlt, FaClock, FaHandHoldingHeart, FaUserEdit, FaSearchPlus, FaRocket } from 'react-icons/fa';
+import WhyChooseUs from './WhyChooseUs';
 
 const ExtraSections = () => {
   return (
@@ -201,7 +202,7 @@ const ExtraSections = () => {
           ))}
         </div>
       </section>
-
+<WhyChooseUs/>
 
       {/* 2. Why Choose Us (Modern Feature Section) */}
       <section className="bg-slate-900 py-24 rounded-[3rem] mx-4 mb-12 overflow-hidden relative">

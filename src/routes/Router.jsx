@@ -1,38 +1,119 @@
-// // // // // // // // import { createBrowserRouter } from "react-router";
-// // // // // // // // import RootLayouts from "../Layouts/RootLayouts";
-// // // // // // // // import { Home } from "lucide-react";
+// // // // // // // // // import { createBrowserRouter } from "react-router";
+// // // // // // // // // import RootLayouts from "../Layouts/RootLayouts";
+// // // // // // // // // import { Home } from "lucide-react";
 
+// // // // // // // // // export const router = createBrowserRouter([
+// // // // // // // // //   {
+// // // // // // // // //     path: "/",
+// // // // // // // // //    Component: RootLayouts,
+// // // // // // // // //    children: [
+// // // // // // // // //     {
+// // // // // // // // //       index: true,
+// // // // // // // // //       Component: Home,
+// // // // // // // // //     }
+// // // // // // // // //    ]
+// // // // // // // // //   },
+// // // // // // // // // ]);
+
+
+// // // // // // // // import { createBrowserRouter } from "react-router-dom";
+// // // // // // // // import RootLayouts from "../Layouts/RootLayouts";
+// // // // // // // // import Home from "../Pages/Home/Home";
 // // // // // // // // export const router = createBrowserRouter([
 // // // // // // // //   {
 // // // // // // // //     path: "/",
-// // // // // // // //    Component: RootLayouts,
-// // // // // // // //    children: [
-// // // // // // // //     {
-// // // // // // // //       index: true,
-// // // // // // // //       Component: Home,
-// // // // // // // //     }
-// // // // // // // //    ]
+// // // // // // // //     Component: RootLayouts,
+// // // // // // // //     children: [
+// // // // // // // //       {
+// // // // // // // //         index: true,
+// // // // // // // //         Component: Home
+// // // // // // // //       },
+// // // // // // // //     ],
 // // // // // // // //   },
 // // // // // // // // ]);
+
 
 
 // // // // // // // import { createBrowserRouter } from "react-router-dom";
 // // // // // // // import RootLayouts from "../Layouts/RootLayouts";
 // // // // // // // import Home from "../Pages/Home/Home";
+// // // // // // // import AuthLayout from "../Layouts/AuthLayout";
+// // // // // // // import Login from "../Pages/Auth/Login";
+// // // // // // // import Register from "../Pages/Auth/Register";
+
 // // // // // // // export const router = createBrowserRouter([
 // // // // // // //   {
 // // // // // // //     path: "/",
-// // // // // // //     Component: RootLayouts,
+// // // // // // //     element: <RootLayouts />, // ✅ Component → element
 // // // // // // //     children: [
 // // // // // // //       {
 // // // // // // //         index: true,
-// // // // // // //         Component: Home
+// // // // // // //         element: <Home />, // ✅ Component → element
+// // // // // // //       },
+// // // // // // //     ],
+// // // // // // //   },
+// // // // // // //   {
+// // // // // // //     path: "/auth", // ✅ AuthLayout separate path
+// // // // // // //     element: <AuthLayout />,
+// // // // // // //     children: [
+// // // // // // //       {
+// // // // // // //         path: "login",
+// // // // // // //         element: <Login />,
+// // // // // // //       },
+// // // // // // //       {
+// // // // // // //         path: "register",
+// // // // // // //         element: <Register />,
 // // // // // // //       },
 // // // // // // //     ],
 // // // // // // //   },
 // // // // // // // ]);
 
 
+// // // // // // // import { createBrowserRouter } from "react-router-dom";
+// // // // // // // import RootLayouts from "../Layouts/RootLayouts";
+// // // // // // // import Home from "../Pages/Home/Home";
+// // // // // // // import AuthLayout from "../Layouts/AuthLayout";
+// // // // // // // import Login from "../Pages/Auth/Login";
+// // // // // // // import Register from "../Pages/Auth/Register";
+
+// // // // // // // export const router = createBrowserRouter([
+// // // // // // //   {
+// // // // // // //     path: "/",
+// // // // // // //     element: <RootLayouts />,
+// // // // // // //     children: [
+// // // // // // //       { index: true, element: <Home /> },
+// // // // // // //     ],
+// // // // // // //   },
+// // // // // // //   {
+// // // // // // //     path: "/auth",
+// // // // // // //     element: <AuthLayout />,
+// // // // // // //     children: [
+// // // // // // //       { path: "login", element: <Login /> },
+// // // // // // //       { path: "register", element: <Register /> },
+// // // // // // //     ],
+// // // // // // //   },
+// // // // // // // ]);
+
+
+
+// // // // // // // import { createBrowserRouter } from "react-router-dom";
+// // // // // // // import RootLayouts from "../Layouts/RootLayouts";
+// // // // // // // import Home from "../Pages/Home/Home";
+// // // // // // // import Login from "../Pages/Auth/Login";
+// // // // // // // import Register from "../Pages/Auth/Register";
+
+// // // // // // // export const router = createBrowserRouter([
+// // // // // // //   {
+// // // // // // //     path: "/",
+// // // // // // //     element: <RootLayouts />,
+// // // // // // //     children: [
+// // // // // // //       { index: true, element: <Home /> },
+// // // // // // //       { path: "login", element: <Login /> },
+// // // // // // //         { path: "register", element: <Register /> },
+// // // // // // //     ],
+// // // // // // //   },
+// // // // // // // ]);
+
 
 // // // // // // import { createBrowserRouter } from "react-router-dom";
 // // // // // // import RootLayouts from "../Layouts/RootLayouts";
@@ -41,40 +122,16 @@
 // // // // // // import Login from "../Pages/Auth/Login";
 // // // // // // import Register from "../Pages/Auth/Register";
 
-// // // // // // export const router = createBrowserRouter([
-// // // // // //   {
-// // // // // //     path: "/",
-// // // // // //     element: <RootLayouts />, // ✅ Component → element
-// // // // // //     children: [
-// // // // // //       {
-// // // // // //         index: true,
-// // // // // //         element: <Home />, // ✅ Component → element
-// // // // // //       },
-// // // // // //     ],
-// // // // // //   },
-// // // // // //   {
-// // // // // //     path: "/auth", // ✅ AuthLayout separate path
-// // // // // //     element: <AuthLayout />,
-// // // // // //     children: [
-// // // // // //       {
-// // // // // //         path: "login",
-// // // // // //         element: <Login />,
-// // // // // //       },
-// // // // // //       {
-// // // // // //         path: "register",
-// // // // // //         element: <Register />,
-// // // // // //       },
-// // // // // //     ],
-// // // // // //   },
-// // // // // // ]);
+// // // // // // // Dashboard pages
+// // // // // // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
+// // // // // // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
+// // // // // // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
 
-
-// // // // // // import { createBrowserRouter } from "react-router-dom";
-// // // // // // import RootLayouts from "../Layouts/RootLayouts";
-// // // // // // import Home from "../Pages/Home/Home";
-// // // // // // import AuthLayout from "../Layouts/AuthLayout";
-// // // // // // import Login from "../Pages/Auth/Login";
-// // // // // // import Register from "../Pages/Auth/Register";
+// // // // // // // Route protection
+// // // // // // import PrivateRoute from "../routes/PrivateRoute";
+// // // // // // import StudentRoute from "../routes/StudentRoute";
+// // // // // // import TutorRoute from "../routes/TutorRoute";
+// // // // // // import AdminRoute from "../routes/AdminRoute";
 
 // // // // // // export const router = createBrowserRouter([
 // // // // // //   {
@@ -82,16 +139,40 @@
 // // // // // //     element: <RootLayouts />,
 // // // // // //     children: [
 // // // // // //       { index: true, element: <Home /> },
-// // // // // //     ],
-// // // // // //   },
-// // // // // //   {
-// // // // // //     path: "/auth",
-// // // // // //     element: <AuthLayout />,
-// // // // // //     children: [
 // // // // // //       { path: "login", element: <Login /> },
 // // // // // //       { path: "register", element: <Register /> },
 // // // // // //     ],
 // // // // // //   },
+// // // // // //   {
+// // // // // //     path: "/dashboard/student",
+// // // // // //     element: (
+// // // // // //       <PrivateRoute>
+// // // // // //         <StudentRoute>
+// // // // // //           <StudentDashboard />
+// // // // // //         </StudentRoute>
+// // // // // //       </PrivateRoute>
+// // // // // //     ),
+// // // // // //   },
+// // // // // //   {
+// // // // // //     path: "/dashboard/tutor",
+// // // // // //     element: (
+// // // // // //       <PrivateRoute>
+// // // // // //         <TutorRoute>
+// // // // // //           <TutorDashboard />
+// // // // // //         </TutorRoute>
+// // // // // //       </PrivateRoute>
+// // // // // //     ),
+// // // // // //   },
+// // // // // //   {
+// // // // // //     path: "/dashboard/admin",
+// // // // // //     element: (
+// // // // // //       <PrivateRoute>
+// // // // // //         <AdminRoute>
+// // // // // //           <AdminDashboard />
+// // // // // //         </AdminRoute>
+// // // // // //       </PrivateRoute>
+// // // // // //     ),
+// // // // // //   },
 // // // // // // ]);
 
 
@@ -102,6 +183,16 @@
 // // // // // // import Login from "../Pages/Auth/Login";
 // // // // // // import Register from "../Pages/Auth/Register";
 
+// // // // // // import DashboardLayout from "../Layouts/DashboardLayout";
+// // // // // // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
+// // // // // // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
+// // // // // // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
+
+// // // // // // import PrivateRoute from "../routes/PrivateRoute";
+// // // // // // import StudentRoute from "../routes/StudentRoute";
+// // // // // // import TutorRoute from "../routes/TutorRoute";
+// // // // // // import AdminRoute from "../routes/AdminRoute";
+
 // // // // // // export const router = createBrowserRouter([
 // // // // // //   {
 // // // // // //     path: "/",
@@ -109,73 +200,25 @@
 // // // // // //     children: [
 // // // // // //       { index: true, element: <Home /> },
 // // // // // //       { path: "login", element: <Login /> },
-// // // // // //         { path: "register", element: <Register /> },
+// // // // // //       { path: "register", element: <Register /> },
+// // // // // //     ],
+// // // // // //   },
+// // // // // //   {
+// // // // // //     path: "/dashboard",
+// // // // // //     element: (
+// // // // // //       <PrivateRoute>
+// // // // // //         <DashboardLayout />
+// // // // // //       </PrivateRoute>
+// // // // // //     ),
+// // // // // //     children: [
+// // // // // //       { path: "student/*", element: <StudentRoute><StudentDashboard /></StudentRoute> },
+// // // // // //       { path: "tutor/*", element: <TutorRoute><TutorDashboard /></TutorRoute> },
+// // // // // //       { path: "admin/*", element: <AdminRoute><AdminDashboard /></AdminRoute> },
 // // // // // //     ],
 // // // // // //   },
 // // // // // // ]);
 
 
-// // // // // import { createBrowserRouter } from "react-router-dom";
-// // // // // import RootLayouts from "../Layouts/RootLayouts";
-// // // // // import Home from "../Pages/Home/Home";
-// // // // // import AuthLayout from "../Layouts/AuthLayout";
-// // // // // import Login from "../Pages/Auth/Login";
-// // // // // import Register from "../Pages/Auth/Register";
-
-// // // // // // Dashboard pages
-// // // // // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
-// // // // // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
-// // // // // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
-
-// // // // // // Route protection
-// // // // // import PrivateRoute from "../routes/PrivateRoute";
-// // // // // import StudentRoute from "../routes/StudentRoute";
-// // // // // import TutorRoute from "../routes/TutorRoute";
-// // // // // import AdminRoute from "../routes/AdminRoute";
-
-// // // // // export const router = createBrowserRouter([
-// // // // //   {
-// // // // //     path: "/",
-// // // // //     element: <RootLayouts />,
-// // // // //     children: [
-// // // // //       { index: true, element: <Home /> },
-// // // // //       { path: "login", element: <Login /> },
-// // // // //       { path: "register", element: <Register /> },
-// // // // //     ],
-// // // // //   },
-// // // // //   {
-// // // // //     path: "/dashboard/student",
-// // // // //     element: (
-// // // // //       <PrivateRoute>
-// // // // //         <StudentRoute>
-// // // // //           <StudentDashboard />
-// // // // //         </StudentRoute>
-// // // // //       </PrivateRoute>
-// // // // //     ),
-// // // // //   },
-// // // // //   {
-// // // // //     path: "/dashboard/tutor",
-// // // // //     element: (
-// // // // //       <PrivateRoute>
-// // // // //         <TutorRoute>
-// // // // //           <TutorDashboard />
-// // // // //         </TutorRoute>
-// // // // //       </PrivateRoute>
-// // // // //     ),
-// // // // //   },
-// // // // //   {
-// // // // //     path: "/dashboard/admin",
-// // // // //     element: (
-// // // // //       <PrivateRoute>
-// // // // //         <AdminRoute>
-// // // // //           <AdminDashboard />
-// // // // //         </AdminRoute>
-// // // // //       </PrivateRoute>
-// // // // //     ),
-// // // // //   },
-// // // // // ]);
-
-
 
 // // // // // import { createBrowserRouter } from "react-router-dom";
 // // // // // import RootLayouts from "../Layouts/RootLayouts";
@@ -183,11 +226,32 @@
 // // // // // import Login from "../Pages/Auth/Login";
 // // // // // import Register from "../Pages/Auth/Register";
 
+// // // // // // Dashboard Layout & Pages
 // // // // // import DashboardLayout from "../Layouts/DashboardLayout";
-// // // // // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
-// // // // // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
-// // // // // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
 
+// // // // // // Student Dashboard & Subpages
+// // // // // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
+// // // // // import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
+// // // // // import PostTuition from "../Pages/Dashboard/student/PostTuition";
+// // // // // import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
+// // // // // import Payments from "../Pages/Dashboard/student/Payments";
+// // // // // import StudentProfile from "../Pages/Dashboard/student/Profile";
+
+// // // // // // Tutor Dashboard & Subpages
+// // // // // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
+// // // // // import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
+// // // // // import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
+// // // // // import Revenue from "../Pages/Dashboard/tutor/Revenue";
+// // // // // import TutorProfile from "../Pages/Dashboard/tutor/Profile";
+
+// // // // // // Admin Dashboard & Subpages
+// // // // // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
+// // // // // import UserManagement from "../Pages/Dashboard/admin/UserManagement";
+// // // // // import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
+// // // // // import Reports from "../Pages/Dashboard/admin/Reports";
+// // // // // import AdminProfile from "../Pages/Dashboard/admin/Profile";
+
+// // // // // // Route Guards
 // // // // // import PrivateRoute from "../routes/PrivateRoute";
 // // // // // import StudentRoute from "../routes/StudentRoute";
 // // // // // import TutorRoute from "../routes/TutorRoute";
@@ -211,9 +275,42 @@
 // // // // //       </PrivateRoute>
 // // // // //     ),
 // // // // //     children: [
-// // // // //       { path: "student/*", element: <StudentRoute><StudentDashboard /></StudentRoute> },
-// // // // //       { path: "tutor/*", element: <TutorRoute><TutorDashboard /></TutorRoute> },
-// // // // //       { path: "admin/*", element: <AdminRoute><AdminDashboard /></AdminRoute> },
+// // // // //       // Student Routes
+// // // // //       {
+// // // // //         path: "student",
+// // // // //         element: <StudentRoute><StudentDashboard /></StudentRoute>,
+// // // // //         children: [
+// // // // //           { path: "my-tuitions", element: <MyTuitions /> },
+// // // // //           { path: "post-tuition", element: <PostTuition /> },
+// // // // //           { path: "applied-tutors", element: <AppliedTutors /> },
+// // // // //           { path: "payments", element: <Payments /> },
+// // // // //           { path: "profile", element: <StudentProfile /> },
+// // // // //         ],
+// // // // //       },
+
+// // // // //       // Tutor Routes
+// // // // //       {
+// // // // //         path: "tutor",
+// // // // //         element: <TutorRoute><TutorDashboard /></TutorRoute>,
+// // // // //         children: [
+// // // // //           { path: "my-applications", element: <MyApplications /> },
+// // // // //           { path: "ongoing-tuitions", element: <OngoingTuitions /> },
+// // // // //           { path: "revenue", element: <Revenue /> },
+// // // // //           { path: "profile", element: <TutorProfile /> },
+// // // // //         ],
+// // // // //       },
+
+// // // // //       // Admin Routes
+// // // // //       {
+// // // // //         path: "admin",
+// // // // //         element: <AdminRoute><AdminDashboard /></AdminRoute>,
+// // // // //         children: [
+// // // // //           { path: "user-management", element: <UserManagement /> },
+// // // // //           { path: "tuition-management", element: <TuitionManagement /> },
+// // // // //           { path: "reports", element: <Reports /> },
+// // // // //           { path: "profile", element: <AdminProfile /> },
+// // // // //         ],
+// // // // //       },
 // // // // //     ],
 // // // // //   },
 // // // // // ]);
@@ -229,7 +326,7 @@
 // // // // // Dashboard Layout & Pages
 // // // // import DashboardLayout from "../Layouts/DashboardLayout";
 
-// // // // // Student Dashboard & Subpages
+// // // // // Student
 // // // // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
 // // // // import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
 // // // // import PostTuition from "../Pages/Dashboard/student/PostTuition";
@@ -237,14 +334,14 @@
 // // // // import Payments from "../Pages/Dashboard/student/Payments";
 // // // // import StudentProfile from "../Pages/Dashboard/student/Profile";
 
-// // // // // Tutor Dashboard & Subpages
+// // // // // Tutor
 // // // // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
 // // // // import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
 // // // // import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
 // // // // import Revenue from "../Pages/Dashboard/tutor/Revenue";
 // // // // import TutorProfile from "../Pages/Dashboard/tutor/Profile";
 
-// // // // // Admin Dashboard & Subpages
+// // // // // Admin
 // // // // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
 // // // // import UserManagement from "../Pages/Dashboard/admin/UserManagement";
 // // // // import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
@@ -275,7 +372,7 @@
 // // // //       </PrivateRoute>
 // // // //     ),
 // // // //     children: [
-// // // //       // Student Routes
+// // // //       // Student
 // // // //       {
 // // // //         path: "student",
 // // // //         element: <StudentRoute><StudentDashboard /></StudentRoute>,
@@ -287,8 +384,7 @@
 // // // //           { path: "profile", element: <StudentProfile /> },
 // // // //         ],
 // // // //       },
-
-// // // //       // Tutor Routes
+// // // //       // Tutor
 // // // //       {
 // // // //         path: "tutor",
 // // // //         element: <TutorRoute><TutorDashboard /></TutorRoute>,
@@ -299,8 +395,7 @@
 // // // //           { path: "profile", element: <TutorProfile /> },
 // // // //         ],
 // // // //       },
-
-// // // //       // Admin Routes
+// // // //       // Admin
 // // // //       {
 // // // //         path: "admin",
 // // // //         element: <AdminRoute><AdminDashboard /></AdminRoute>,
@@ -411,14 +506,12 @@
 // // // ]);
 
 
-
 // // import { createBrowserRouter } from "react-router-dom";
 // // import RootLayouts from "../Layouts/RootLayouts";
 // // import Home from "../Pages/Home/Home";
 // // import Login from "../Pages/Auth/Login";
 // // import Register from "../Pages/Auth/Register";
 
-// // // Dashboard Layout & Pages
 // // import DashboardLayout from "../Layouts/DashboardLayout";
 
 // // // Student
@@ -506,339 +599,497 @@
 // // ]);
 
 
-// import { createBrowserRouter } from "react-router-dom";
-// import RootLayouts from "../Layouts/RootLayouts";
-// import Home from "../Pages/Home/Home";
-// import Login from "../Pages/Auth/Login";
-// import Register from "../Pages/Auth/Register";
+// // import { createBrowserRouter } from "react-router-dom";
+// // import RootLayouts from "../Layouts/RootLayouts";
+// // import Home from "../Pages/Home/Home";
+// // import Login from "../Pages/Auth/Login";
+// // import Register from "../Pages/Auth/Register";
 
-// import DashboardLayout from "../Layouts/DashboardLayout";
+// // import DashboardLayout from "../Layouts/DashboardLayout";
 
-// // Student
-// import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
-// import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
-// import PostTuition from "../Pages/Dashboard/student/PostTuition";
-// import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
-// import Payments from "../Pages/Dashboard/student/Payments";
-// import StudentProfile from "../Pages/Dashboard/student/Profile";
+// // // Student
+// // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
+// // import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
+// // import PostTuition from "../Pages/Dashboard/student/PostTuition";
+// // import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
+// // import Payments from "../Pages/Dashboard/student/Payments";
+// // import StudentProfile from "../Pages/Dashboard/student/Profile";
 
-// // Tutor
-// import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
-// import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
-// import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
-// import Revenue from "../Pages/Dashboard/tutor/Revenue";
-// import TutorProfile from "../Pages/Dashboard/tutor/Profile";
+// // // Tutor
+// // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
+// // import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
+// // import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
+// // import Revenue from "../Pages/Dashboard/tutor/Revenue";
+// // import TutorProfile from "../Pages/Dashboard/tutor/Profile";
 
-// // Admin
-// import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
-// import UserManagement from "../Pages/Dashboard/admin/UserManagement";
-// import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
-// import Reports from "../Pages/Dashboard/admin/Reports";
-// import AdminProfile from "../Pages/Dashboard/admin/Profile";
+// // // Admin
+// // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
+// // import UserManagement from "../Pages/Dashboard/admin/UserManagement";
+// // import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
+// // import Reports from "../Pages/Dashboard/admin/Reports";
+// // import AdminProfile from "../Pages/Dashboard/admin/Profile";
 
-// // Route Guards
-// import PrivateRoute from "../routes/PrivateRoute";
-// import StudentRoute from "../routes/StudentRoute";
-// import TutorRoute from "../routes/TutorRoute";
-// import AdminRoute from "../routes/AdminRoute";
+// // // Route Guards
+// // import PrivateRoute from "../routes/PrivateRoute";
+// // import StudentRoute from "../routes/StudentRoute";
+// // import TutorRoute from "../routes/TutorRoute";
+// // import AdminRoute from "../routes/AdminRoute";
+// // import Tutions from "../Pages/Tutions";
+// // import Tutors from "../Pages/Tutors";
+// // import About from "../Pages/About";
+// // import Contact from "../Pages/Contact";
 
-// export const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <RootLayouts />,
-//     children: [
-//       { index: true, element: <Home /> },
-//       { path: "login", element: <Login /> },
-//       { path: "register", element: <Register /> },
-//     ],
-//   },
-//   {
-//     path: "/dashboard",
-//     element: (
-//       <PrivateRoute>
-//         <DashboardLayout />
-//       </PrivateRoute>
-//     ),
-//     children: [
-//       // Student
-//       {
-//         path: "student",
-//         element: <StudentRoute><StudentDashboard /></StudentRoute>,
-//         children: [
-//           { path: "my-tuitions", element: <MyTuitions /> },
-//           { path: "post-tuition", element: <PostTuition /> },
-//           { path: "applied-tutors", element: <AppliedTutors /> },
-//           { path: "payments", element: <Payments /> },
-//           { path: "profile", element: <StudentProfile /> },
-//         ],
-//       },
-//       // Tutor
-//       {
-//         path: "tutor",
-//         element: <TutorRoute><TutorDashboard /></TutorRoute>,
-//         children: [
-//           { path: "my-applications", element: <MyApplications /> },
-//           { path: "ongoing-tuitions", element: <OngoingTuitions /> },
-//           { path: "revenue", element: <Revenue /> },
-//           { path: "profile", element: <TutorProfile /> },
-//         ],
-//       },
-//       // Admin
-//       {
-//         path: "admin",
-//         element: <AdminRoute><AdminDashboard /></AdminRoute>,
-//         children: [
-//           { path: "user-management", element: <UserManagement /> },
-//           { path: "tuition-management", element: <TuitionManagement /> },
-//           { path: "reports", element: <Reports /> },
-//           { path: "profile", element: <AdminProfile /> },
-//         ],
-//       },
-//     ],
-//   },
-// ]);
+// // export const router = createBrowserRouter([
+// //   {
+// //     path: "/",
+// //     element: <RootLayouts />,
+// //     children: [
+// //       { index: true, element: <Home /> },
 
-
-// import { createBrowserRouter } from "react-router-dom";
-// import RootLayouts from "../Layouts/RootLayouts";
-// import Home from "../Pages/Home/Home";
-// import Login from "../Pages/Auth/Login";
-// import Register from "../Pages/Auth/Register";
-
-// import DashboardLayout from "../Layouts/DashboardLayout";
-
-// // Student
-// import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
-// import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
-// import PostTuition from "../Pages/Dashboard/student/PostTuition";
-// import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
-// import Payments from "../Pages/Dashboard/student/Payments";
-// import StudentProfile from "../Pages/Dashboard/student/Profile";
-
-// // Tutor
-// import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
-// import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
-// import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
-// import Revenue from "../Pages/Dashboard/tutor/Revenue";
-// import TutorProfile from "../Pages/Dashboard/tutor/Profile";
-
-// // Admin
-// import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
-// import UserManagement from "../Pages/Dashboard/admin/UserManagement";
-// import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
-// import Reports from "../Pages/Dashboard/admin/Reports";
-// import AdminProfile from "../Pages/Dashboard/admin/Profile";
-
-// // Route Guards
-// import PrivateRoute from "../routes/PrivateRoute";
-// import StudentRoute from "../routes/StudentRoute";
-// import TutorRoute from "../routes/TutorRoute";
-// import AdminRoute from "../routes/AdminRoute";
-// import Tutions from "../Pages/Tutions";
-// import Tutors from "../Pages/Tutors";
-// import About from "../Pages/About";
-// import Contact from "../Pages/Contact";
-
-// export const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <RootLayouts />,
-//     children: [
-//       { index: true, element: <Home /> },
-
-//       { path: "tuitions", element: <Tutions/> },
-//       { path: "tutors", element: <Tutors/> },
-//       { path: "about", element: <About/> },
-//       { path: "contact", element: <Contact/> },
-//       { path: "login", element: <Login /> },
-//       { path: "register", element: <Register /> },
-//     ],
-//   },
-//   {
-//     path: "/dashboard",
-//     element: (
-//       <PrivateRoute>
-//         <DashboardLayout />
-//       </PrivateRoute>
-//     ),
-//     children: [
-//       // 🔥 Student Routes
-//       {
-//         path: "student",
-//         element: (
-//           <StudentRoute>
-//             <StudentDashboard />
-//           </StudentRoute>
-//         ),
-//         children: [
-//           // index: true দিলে /dashboard/student এ ঢুকলেই MyTuitions দেখাবে
-//           { index: true, element: <MyTuitions /> }, 
-//           { path: "my-tuitions", element: <MyTuitions /> },
-//           { path: "post-tuition", element: <PostTuition /> },
-//           { path: "applied-tutors", element: <AppliedTutors /> },
-//           { path: "payments", element: <Payments /> },
-//           { path: "profile", element: <StudentProfile /> },
-//         ],
-//       },
-//       // 🔥 Tutor Routes
-//       {
-//         path: "tutor",
-//         element: (
-//           <TutorRoute>
-//             <TutorDashboard />
-//           </TutorRoute>
-//         ),
-//         children: [
-//           { index: true, element: <MyApplications /> },
-//           { path: "my-applications", element: <MyApplications /> },
-//           { path: "ongoing-tuitions", element: <OngoingTuitions /> },
-//           { path: "revenue", element: <Revenue /> },
-//           { path: "profile", element: <TutorProfile /> },
-//         ],
-//       },
-//       // 🔥 Admin Routes
-//       {
-//         path: "admin",
-//         element: (
-//           <AdminRoute>
-//             <AdminDashboard />
-//           </AdminRoute>
-//         ),
-//         children: [
-//           { index: true, element: <UserManagement /> },
-//           { path: "user-management", element: <UserManagement /> },
-//           { path: "tuition-management", element: <TuitionManagement /> },
-//           { path: "reports", element: <Reports /> },
-//           { path: "profile", element: <AdminProfile /> },
-//         ],
-//       },
-//     ],
-//   },
-// ]);
+// //       { path: "tuitions", element: <Tutions/> },
+// //       { path: "tutors", element: <Tutors/> },
+// //       { path: "about", element: <About/> },
+// //       { path: "contact", element: <Contact/> },
+// //       { path: "login", element: <Login /> },
+// //       { path: "register", element: <Register /> },
+// //     ],
+// //   },
+// //   {
+// //     path: "/dashboard",
+// //     element: (
+// //       <PrivateRoute>
+// //         <DashboardLayout />
+// //       </PrivateRoute>
+// //     ),
+// //     children: [
+// //       // 🔥 Student Routes
+// //       {
+// //         path: "student",
+// //         element: (
+// //           <StudentRoute>
+// //             <StudentDashboard />
+// //           </StudentRoute>
+// //         ),
+// //         children: [
+// //           // index: true দিলে /dashboard/student এ ঢুকলেই MyTuitions দেখাবে
+// //           { index: true, element: <MyTuitions /> }, 
+// //           { path: "my-tuitions", element: <MyTuitions /> },
+// //           { path: "post-tuition", element: <PostTuition /> },
+// //           { path: "applied-tutors", element: <AppliedTutors /> },
+// //           { path: "payments", element: <Payments /> },
+// //           { path: "profile", element: <StudentProfile /> },
+// //         ],
+// //       },
+// //       // 🔥 Tutor Routes
+// //       {
+// //         path: "tutor",
+// //         element: (
+// //           <TutorRoute>
+// //             <TutorDashboard />
+// //           </TutorRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <MyApplications /> },
+// //           { path: "my-applications", element: <MyApplications /> },
+// //           { path: "ongoing-tuitions", element: <OngoingTuitions /> },
+// //           { path: "revenue", element: <Revenue /> },
+// //           { path: "profile", element: <TutorProfile /> },
+// //         ],
+// //       },
+// //       // 🔥 Admin Routes
+// //       {
+// //         path: "admin",
+// //         element: (
+// //           <AdminRoute>
+// //             <AdminDashboard />
+// //           </AdminRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <UserManagement /> },
+// //           { path: "user-management", element: <UserManagement /> },
+// //           { path: "tuition-management", element: <TuitionManagement /> },
+// //           { path: "reports", element: <Reports /> },
+// //           { path: "profile", element: <AdminProfile /> },
+// //         ],
+// //       },
+// //     ],
+// //   },
+// // ]);
 
 
-// import { createBrowserRouter } from "react-router-dom";
-// import RootLayouts from "../Layouts/RootLayouts";
-// import Home from "../Pages/Home/Home";
-// import Login from "../Pages/Auth/Login";
-// import Register from "../Pages/Auth/Register";
+// // import { createBrowserRouter } from "react-router-dom";
+// // import RootLayouts from "../Layouts/RootLayouts";
+// // import Home from "../Pages/Home/Home";
+// // import Login from "../Pages/Auth/Login";
+// // import Register from "../Pages/Auth/Register";
 
-// import DashboardLayout from "../Layouts/DashboardLayout";
+// // import DashboardLayout from "../Layouts/DashboardLayout";
 
-// // Student
-// import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
-// import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
-// import PostTuition from "../Pages/Dashboard/student/PostTuition";
-// import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
-// import Payments from "../Pages/Dashboard/student/Payments";
-// import StudentProfile from "../Pages/Dashboard/student/Profile";
+// // // Student
+// // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
+// // import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
+// // import PostTuition from "../Pages/Dashboard/student/PostTuition";
+// // import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
+// // import Payments from "../Pages/Dashboard/student/Payments";
+// // import StudentProfile from "../Pages/Dashboard/student/Profile";
 
-// // Tutor
-// import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
-// import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
-// import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
-// import Revenue from "../Pages/Dashboard/tutor/Revenue";
-// import TutorProfile from "../Pages/Dashboard/tutor/Profile";
+// // // Tutor
+// // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
+// // import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
+// // import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
+// // import Revenue from "../Pages/Dashboard/tutor/Revenue";
+// // import TutorProfile from "../Pages/Dashboard/tutor/Profile";
 
-// // Admin
-// import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
-// import UserManagement from "../Pages/Dashboard/admin/UserManagement";
-// import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
-// import Reports from "../Pages/Dashboard/admin/Reports";
-// import AdminProfile from "../Pages/Dashboard/admin/Profile";
+// // // Admin
+// // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
+// // import UserManagement from "../Pages/Dashboard/admin/UserManagement";
+// // import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
+// // import Reports from "../Pages/Dashboard/admin/Reports";
+// // import AdminProfile from "../Pages/Dashboard/admin/Profile";
 
-// // Route Guards
-// import PrivateRoute from "../routes/PrivateRoute";
-// import StudentRoute from "../routes/StudentRoute";
-// import TutorRoute from "../routes/TutorRoute";
-// import AdminRoute from "../routes/AdminRoute";
+// // // Route Guards
+// // import PrivateRoute from "../routes/PrivateRoute";
+// // import StudentRoute from "../routes/StudentRoute";
+// // import TutorRoute from "../routes/TutorRoute";
+// // import AdminRoute from "../routes/AdminRoute";
 
-// // Public Pages
-// import Tutions from "../Pages/Tutions";
-// import Tutors from "../Pages/Tutors";
-// import About from "../Pages/About";
-// import Contact from "../Pages/Contact";
-// import TuitionDetails from "../Pages/TuitionDetails"; // 🔥 New File Added
+// // // Public Pages
+// // import Tutions from "../Pages/Tutions";
+// // import Tutors from "../Pages/Tutors";
+// // import About from "../Pages/About";
+// // import Contact from "../Pages/Contact";
+// // import TuitionDetails from "../Pages/TuitionDetails"; // 🔥 New File Added
 
-// export const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <RootLayouts />,
-//     children: [
-//       { index: true, element: <Home /> },
-//       { path: "tuitions", element: <Tutions /> },
+// // export const router = createBrowserRouter([
+// //   {
+// //     path: "/",
+// //     element: <RootLayouts />,
+// //     children: [
+// //       { index: true, element: <Home /> },
+// //       { path: "tuitions", element: <Tutions /> },
       
-//       // 🔥 Dynamic route for Tuition Details (Where Tutor will apply)
-//       { path: "tuition/:id", element: <TuitionDetails /> }, 
+// //       // 🔥 Dynamic route for Tuition Details (Where Tutor will apply)
+// //       { path: "tuition/:id", element: <TuitionDetails /> }, 
       
-//       { path: "tutors", element: <Tutors /> },
-//       { path: "about", element: <About /> },
-//       { path: "contact", element: <Contact /> },
-//       { path: "login", element: <Login /> },
-//       { path: "register", element: <Register /> },
-//     ],
-//   },
-//   {
-//     path: "/dashboard",
-//     element: (
-//       <PrivateRoute>
-//         <DashboardLayout />
-//       </PrivateRoute>
-//     ),
-//     children: [
-//       // 🔥 Student Routes
-//       {
-//         path: "student",
-//         element: (
-//           <StudentRoute>
-//             <StudentDashboard />
-//           </StudentRoute>
-//         ),
-//         children: [
-//           { index: true, element: <MyTuitions /> }, 
-//           { path: "my-tuitions", element: <MyTuitions /> },
-//           { path: "post-tuition", element: <PostTuition /> },
-//           { path: "applied-tutors", element: <AppliedTutors /> },
-//           { path: "payments", element: <Payments /> },
-//           { path: "profile", element: <StudentProfile /> },
-//         ],
-//       },
-//       // 🔥 Tutor Routes
-//       {
-//         path: "tutor",
-//         element: (
-//           <TutorRoute>
-//             <TutorDashboard />
-//           </TutorRoute>
-//         ),
-//         children: [
-//           { index: true, element: <MyApplications /> },
-//           { path: "my-applications", element: <MyApplications /> },
-//           { path: "ongoing-tuitions", element: <OngoingTuitions /> },
-//           { path: "revenue", element: <Revenue /> },
-//           { path: "profile", element: <TutorProfile /> },
-//         ],
-//       },
-//       // 🔥 Admin Routes
-//       {
-//         path: "admin",
-//         element: (
-//           <AdminRoute>
-//             <AdminDashboard />
-//           </AdminRoute>
-//         ),
-//         children: [
-//           { index: true, element: <UserManagement /> },
-//           { path: "user-management", element: <UserManagement /> },
-//           { path: "tuition-management", element: <TuitionManagement /> },
-//           { path: "reports", element: <Reports /> },
-//           { path: "profile", element: <AdminProfile /> },
-//         ],
-//       },
-//     ],
-//   },
-// ]);
+// //       { path: "tutors", element: <Tutors /> },
+// //       { path: "about", element: <About /> },
+// //       { path: "contact", element: <Contact /> },
+// //       { path: "login", element: <Login /> },
+// //       { path: "register", element: <Register /> },
+// //     ],
+// //   },
+// //   {
+// //     path: "/dashboard",
+// //     element: (
+// //       <PrivateRoute>
+// //         <DashboardLayout />
+// //       </PrivateRoute>
+// //     ),
+// //     children: [
+// //       // 🔥 Student Routes
+// //       {
+// //         path: "student",
+// //         element: (
+// //           <StudentRoute>
+// //             <StudentDashboard />
+// //           </StudentRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <MyTuitions /> }, 
+// //           { path: "my-tuitions", element: <MyTuitions /> },
+// //           { path: "post-tuition", element: <PostTuition /> },
+// //           { path: "applied-tutors", element: <AppliedTutors /> },
+// //           { path: "payments", element: <Payments /> },
+// //           { path: "profile", element: <StudentProfile /> },
+// //         ],
+// //       },
+// //       // 🔥 Tutor Routes
+// //       {
+// //         path: "tutor",
+// //         element: (
+// //           <TutorRoute>
+// //             <TutorDashboard />
+// //           </TutorRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <MyApplications /> },
+// //           { path: "my-applications", element: <MyApplications /> },
+// //           { path: "ongoing-tuitions", element: <OngoingTuitions /> },
+// //           { path: "revenue", element: <Revenue /> },
+// //           { path: "profile", element: <TutorProfile /> },
+// //         ],
+// //       },
+// //       // 🔥 Admin Routes
+// //       {
+// //         path: "admin",
+// //         element: (
+// //           <AdminRoute>
+// //             <AdminDashboard />
+// //           </AdminRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <UserManagement /> },
+// //           { path: "user-management", element: <UserManagement /> },
+// //           { path: "tuition-management", element: <TuitionManagement /> },
+// //           { path: "reports", element: <Reports /> },
+// //           { path: "profile", element: <AdminProfile /> },
+// //         ],
+// //       },
+// //     ],
+// //   },
+// // ]);
 
+
+// // import { createBrowserRouter } from "react-router-dom";
+// // import RootLayouts from "../Layouts/RootLayouts";
+// // import Home from "../Pages/Home/Home";
+// // import Login from "../Pages/Auth/Login";
+// // import Register from "../Pages/Auth/Register";
+
+// // import DashboardLayout from "../Layouts/DashboardLayout";
+
+// // // Student
+// // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
+// // import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
+// // import PostTuition from "../Pages/Dashboard/student/PostTuition";
+// // import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
+// // import Payments from "../Pages/Dashboard/student/Payments";
+// // import Payment from "../Pages/Dashboard/student/Payment"; // 🔥 Import Payment Process Page
+// // import StudentProfile from "../Pages/Dashboard/student/Profile";
+
+// // // Tutor
+// // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
+// // import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
+// // import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
+// // import Revenue from "../Pages/Dashboard/tutor/Revenue";
+// // import TutorProfile from "../Pages/Dashboard/tutor/Profile";
+
+// // // Admin
+// // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
+// // import UserManagement from "../Pages/Dashboard/admin/UserManagement";
+// // import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
+// // import Reports from "../Pages/Dashboard/admin/Reports";
+// // import AdminProfile from "../Pages/Dashboard/admin/Profile";
+
+// // // Route Guards
+// // import PrivateRoute from "../routes/PrivateRoute";
+// // import StudentRoute from "../routes/StudentRoute";
+// // import TutorRoute from "../routes/TutorRoute";
+// // import AdminRoute from "../routes/AdminRoute";
+
+// // // Public Pages
+// // import Tutions from "../Pages/Tutions";
+// // import Tutors from "../Pages/Tutors";
+// // import About from "../Pages/About";
+// // import Contact from "../Pages/Contact";
+// // import TuitionDetails from "../Pages/TuitionDetails";
+
+// // export const router = createBrowserRouter([
+// //   {
+// //     path: "/",
+// //     element: <RootLayouts />,
+// //     children: [
+// //       { index: true, element: <Home /> },
+// //       { path: "tuitions", element: <Tutions /> },
+// //       { path: "tuition/:id", element: <TuitionDetails /> },
+// //       { path: "tutors", element: <Tutors /> },
+// //       { path: "about", element: <About /> },
+// //       { path: "contact", element: <Contact /> },
+// //       { path: "login", element: <Login /> },
+// //       { path: "register", element: <Register /> },
+// //     ],
+// //   },
+// //   {
+// //     path: "/dashboard",
+// //     element: (
+// //       <PrivateRoute>
+// //         <DashboardLayout />
+// //       </PrivateRoute>
+// //     ),
+// //     children: [
+// //       // 🔥 Student Routes
+// //       {
+// //         path: "student",
+// //         element: (
+// //           <StudentRoute>
+// //             <StudentDashboard />
+// //           </StudentRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <MyTuitions /> },
+// //           { path: "my-tuitions", element: <MyTuitions /> },
+// //           { path: "post-tuition", element: <PostTuition /> },
+// //           { path: "applied-tutors", element: <AppliedTutors /> },
+// //           { path: "payments", element: <Payments /> }, // History
+// //           { path: "payment-process", element: <Payment /> }, // 🔥 Stripe Process Page
+// //           { path: "profile", element: <StudentProfile /> },
+// //         ],
+// //       },
+// //       // 🔥 Tutor Routes
+// //       {
+// //         path: "tutor",
+// //         element: (
+// //           <TutorRoute>
+// //             <TutorDashboard />
+// //           </TutorRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <MyApplications /> },
+// //           { path: "my-applications", element: <MyApplications /> },
+// //           { path: "ongoing-tuitions", element: <OngoingTuitions /> },
+// //           { path: "revenue", element: <Revenue /> },
+// //           { path: "profile", element: <TutorProfile /> },
+// //         ],
+// //       },
+// //       // 🔥 Admin Routes
+// //       {
+// //         path: "admin",
+// //         element: (
+// //           <AdminRoute>
+// //             <AdminDashboard />
+// //           </AdminRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <UserManagement /> },
+// //           { path: "user-management", element: <UserManagement /> },
+// //           { path: "tuition-management", element: <TuitionManagement /> },
+// //           { path: "reports", element: <Reports /> },
+// //           { path: "profile", element: <AdminProfile /> },
+// //         ],
+// //       },
+// //     ],
+// //   },
+// // ]);
+
+
+
+
+// // import { createBrowserRouter } from "react-router-dom";
+// // import RootLayouts from "../Layouts/RootLayouts";
+// // import Home from "../Pages/Home/Home";
+// // import Login from "../Pages/Auth/Login";
+// // import Register from "../Pages/Auth/Register";
+
+// // import DashboardLayout from "../Layouts/DashboardLayout";
+
+// // // Student
+// // import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
+// // import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
+// // import PostTuition from "../Pages/Dashboard/student/PostTuition";
+// // import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
+// // import Payments from "../Pages/Dashboard/student/Payments"; // 🔥 Handles Payment Success & DB Update
+// // import Payment from "../Pages/Dashboard/student/Payment"; 
+// // import StudentProfile from "../Pages/Dashboard/student/Profile";
+
+// // // Tutor
+// // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
+// // import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
+// // import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
+// // import Revenue from "../Pages/Dashboard/tutor/Revenue";
+// // import TutorProfile from "../Pages/Dashboard/tutor/Profile";
+
+// // // Admin
+// // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
+// // import UserManagement from "../Pages/Dashboard/admin/UserManagement";
+// // import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
+// // import Reports from "../Pages/Dashboard/admin/Reports";
+// // import AdminProfile from "../Pages/Dashboard/admin/Profile";
+
+// // // Route Guards
+// // import PrivateRoute from "../routes/PrivateRoute";
+// // import StudentRoute from "../routes/StudentRoute";
+// // import TutorRoute from "../routes/TutorRoute";
+// // import AdminRoute from "../routes/AdminRoute";
+
+// // // Public Pages
+// // import Tutions from "../Pages/Tutions";
+// // import Tutors from "../Pages/Tutors";
+// // import About from "../Pages/About";
+// // import Contact from "../Pages/Contact";
+// // import TuitionDetails from "../Pages/TuitionDetails";
+
+// // export const router = createBrowserRouter([
+// //   {
+// //     path: "/",
+// //     element: <RootLayouts />,
+// //     children: [
+// //       { index: true, element: <Home /> },
+// //       { path: "tuitions", element: <Tutions /> },
+// //       { path: "tuition/:id", element: <TuitionDetails /> },
+// //       { path: "tutors", element: <Tutors /> },
+// //       { path: "about", element: <About /> },
+// //       { path: "contact", element: <Contact /> },
+// //       { path: "login", element: <Login /> },
+// //       { path: "register", element: <Register /> },
+// //     ],
+// //   },
+// //   {
+// //     path: "/dashboard",
+// //     element: (
+// //       <PrivateRoute>
+// //         <DashboardLayout />
+// //       </PrivateRoute>
+// //     ),
+// //     children: [
+// //       // 🔥 Student Routes
+// //       {
+// //         path: "student",
+// //         element: (
+// //           <StudentRoute>
+// //             <StudentDashboard />
+// //           </StudentRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <MyTuitions /> },
+// //           { path: "my-tuitions", element: <MyTuitions /> },
+// //           { path: "post-tuition", element: <PostTuition /> },
+// //           { path: "applied-tutors", element: <AppliedTutors /> },
+          
+// //           /* 🔥 Payment Success Route: 
+// //              Stripe theke redirect hoye ekhane ashbe query params niye 
+// //              URL: /dashboard/student/payments?appId=...&tuitionId=... 
+// //           */
+// //           { path: "payments", element: <Payments /> }, 
+          
+// //           { path: "payment-process", element: <Payment /> }, 
+// //           { path: "profile", element: <StudentProfile /> },
+// //         ],
+// //       },
+// //       // 🔥 Tutor Routes
+// //       {
+// //         path: "tutor",
+// //         element: (
+// //           <TutorRoute>
+// //             <TutorDashboard />
+// //           </TutorRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <MyApplications /> },
+// //           { path: "my-applications", element: <MyApplications /> },
+// //           { path: "ongoing-tuitions", element: <OngoingTuitions /> },
+// //           { path: "revenue", element: <Revenue /> },
+// //           { path: "profile", element: <TutorProfile /> },
+// //         ],
+// //       },
+// //       // 🔥 Admin Routes
+// //       {
+// //         path: "admin",
+// //         element: (
+// //           <AdminRoute>
+// //             <AdminDashboard />
+// //           </AdminRoute>
+// //         ),
+// //         children: [
+// //           { index: true, element: <UserManagement /> },
+// //           { path: "user-management", element: <UserManagement /> },
+// //           { path: "tuition-management", element: <TuitionManagement /> },
+// //           { path: "reports", element: <Reports /> },
+// //           { path: "profile", element: <AdminProfile /> },
+// //         ],
+// //       },
+// //     ],
+// //   },
+// // ]);
 
 // import { createBrowserRouter } from "react-router-dom";
 // import RootLayouts from "../Layouts/RootLayouts";
@@ -853,133 +1104,10 @@
 // import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
 // import PostTuition from "../Pages/Dashboard/student/PostTuition";
 // import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
-// import Payments from "../Pages/Dashboard/student/Payments";
-// import Payment from "../Pages/Dashboard/student/Payment"; // 🔥 Import Payment Process Page
-// import StudentProfile from "../Pages/Dashboard/student/Profile";
-
-// // Tutor
-// import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
-// import MyApplications from "../Pages/Dashboard/tutor/MyApplications";
-// import OngoingTuitions from "../Pages/Dashboard/tutor/OngoingTuitions";
-// import Revenue from "../Pages/Dashboard/tutor/Revenue";
-// import TutorProfile from "../Pages/Dashboard/tutor/Profile";
-
-// // Admin
-// import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
-// import UserManagement from "../Pages/Dashboard/admin/UserManagement";
-// import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
-// import Reports from "../Pages/Dashboard/admin/Reports";
-// import AdminProfile from "../Pages/Dashboard/admin/Profile";
-
-// // Route Guards
-// import PrivateRoute from "../routes/PrivateRoute";
-// import StudentRoute from "../routes/StudentRoute";
-// import TutorRoute from "../routes/TutorRoute";
-// import AdminRoute from "../routes/AdminRoute";
-
-// // Public Pages
-// import Tutions from "../Pages/Tutions";
-// import Tutors from "../Pages/Tutors";
-// import About from "../Pages/About";
-// import Contact from "../Pages/Contact";
-// import TuitionDetails from "../Pages/TuitionDetails";
-
-// export const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <RootLayouts />,
-//     children: [
-//       { index: true, element: <Home /> },
-//       { path: "tuitions", element: <Tutions /> },
-//       { path: "tuition/:id", element: <TuitionDetails /> },
-//       { path: "tutors", element: <Tutors /> },
-//       { path: "about", element: <About /> },
-//       { path: "contact", element: <Contact /> },
-//       { path: "login", element: <Login /> },
-//       { path: "register", element: <Register /> },
-//     ],
-//   },
-//   {
-//     path: "/dashboard",
-//     element: (
-//       <PrivateRoute>
-//         <DashboardLayout />
-//       </PrivateRoute>
-//     ),
-//     children: [
-//       // 🔥 Student Routes
-//       {
-//         path: "student",
-//         element: (
-//           <StudentRoute>
-//             <StudentDashboard />
-//           </StudentRoute>
-//         ),
-//         children: [
-//           { index: true, element: <MyTuitions /> },
-//           { path: "my-tuitions", element: <MyTuitions /> },
-//           { path: "post-tuition", element: <PostTuition /> },
-//           { path: "applied-tutors", element: <AppliedTutors /> },
-//           { path: "payments", element: <Payments /> }, // History
-//           { path: "payment-process", element: <Payment /> }, // 🔥 Stripe Process Page
-//           { path: "profile", element: <StudentProfile /> },
-//         ],
-//       },
-//       // 🔥 Tutor Routes
-//       {
-//         path: "tutor",
-//         element: (
-//           <TutorRoute>
-//             <TutorDashboard />
-//           </TutorRoute>
-//         ),
-//         children: [
-//           { index: true, element: <MyApplications /> },
-//           { path: "my-applications", element: <MyApplications /> },
-//           { path: "ongoing-tuitions", element: <OngoingTuitions /> },
-//           { path: "revenue", element: <Revenue /> },
-//           { path: "profile", element: <TutorProfile /> },
-//         ],
-//       },
-//       // 🔥 Admin Routes
-//       {
-//         path: "admin",
-//         element: (
-//           <AdminRoute>
-//             <AdminDashboard />
-//           </AdminRoute>
-//         ),
-//         children: [
-//           { index: true, element: <UserManagement /> },
-//           { path: "user-management", element: <UserManagement /> },
-//           { path: "tuition-management", element: <TuitionManagement /> },
-//           { path: "reports", element: <Reports /> },
-//           { path: "profile", element: <AdminProfile /> },
-//         ],
-//       },
-//     ],
-//   },
-// ]);
-
-
-
-
-// import { createBrowserRouter } from "react-router-dom";
-// import RootLayouts from "../Layouts/RootLayouts";
-// import Home from "../Pages/Home/Home";
-// import Login from "../Pages/Auth/Login";
-// import Register from "../Pages/Auth/Register";
-
-// import DashboardLayout from "../Layouts/DashboardLayout";
-
-// // Student
-// import StudentDashboard from "../Pages/Dashboard/student/StudentDashboard";
-// import MyTuitions from "../Pages/Dashboard/student/MyTuitions";
-// import PostTuition from "../Pages/Dashboard/student/PostTuition";
-// import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
-// import Payments from "../Pages/Dashboard/student/Payments"; // 🔥 Handles Payment Success & DB Update
+// import Payments from "../Pages/Dashboard/student/Payments"; 
 // import Payment from "../Pages/Dashboard/student/Payment"; 
 // import StudentProfile from "../Pages/Dashboard/student/Profile";
+// import PaymentSuccess from "../Pages/Dashboard/student/PaymentSuccess"; // সঠিক ইমপোর্ট
 
 // // Tutor
 // import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
@@ -990,7 +1118,7 @@
 
 // // Admin
 // import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
-// import UserManagement from "../Pages/Dashboard/admin/UserManagement";
+// import UserManagement from "../Pages/Dashboard/admin/UserManagement"; // 🛠 পাথ ঠিক করা হয়েছে (Pages যোগ করা হয়েছে)
 // import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
 // import Reports from "../Pages/Dashboard/admin/Reports";
 // import AdminProfile from "../Pages/Dashboard/admin/Profile";
@@ -1045,11 +1173,14 @@
 //           { path: "post-tuition", element: <PostTuition /> },
 //           { path: "applied-tutors", element: <AppliedTutors /> },
           
-//           /* 🔥 Payment Success Route: 
-//              Stripe theke redirect hoye ekhane ashbe query params niye 
-//              URL: /dashboard/student/payments?appId=...&tuitionId=... 
-//           */
-//           { path: "payments", element: <Payments /> }, 
+//           /* 🔥 Payment Success Nested Route */
+//           { 
+//             path: "payments", 
+//             children: [
+//                 { index: true, element: <Payments /> }, 
+//                 { path: "success", element: <PaymentSuccess /> } 
+//             ]
+//           }, 
           
 //           { path: "payment-process", element: <Payment /> }, 
 //           { path: "profile", element: <StudentProfile /> },
@@ -1091,6 +1222,7 @@
 //   },
 // ]);
 
+
 import { createBrowserRouter } from "react-router-dom";
 import RootLayouts from "../Layouts/RootLayouts";
 import Home from "../Pages/Home/Home";
@@ -1107,7 +1239,7 @@ import AppliedTutors from "../Pages/Dashboard/student/AppliedTutors";
 import Payments from "../Pages/Dashboard/student/Payments"; 
 import Payment from "../Pages/Dashboard/student/Payment"; 
 import StudentProfile from "../Pages/Dashboard/student/Profile";
-import PaymentSuccess from "../Pages/Dashboard/student/PaymentSuccess"; // সঠিক ইমপোর্ট
+import PaymentSuccess from "../Pages/Dashboard/student/PaymentSuccess";
 
 // Tutor
 import TutorDashboard from "../Pages/Dashboard/tutor/TutorDashboard";
@@ -1118,7 +1250,7 @@ import TutorProfile from "../Pages/Dashboard/tutor/Profile";
 
 // Admin
 import AdminDashboard from "../Pages/Dashboard/admin/AdminDashboard";
-import UserManagement from "../Pages/Dashboard/admin/UserManagement"; // 🛠 পাথ ঠিক করা হয়েছে (Pages যোগ করা হয়েছে)
+import UserManagement from "../Pages/Dashboard/admin/UserManagement";
 import TuitionManagement from "../Pages/Dashboard/admin/TuitionManagement";
 import Reports from "../Pages/Dashboard/admin/Reports";
 import AdminProfile from "../Pages/Dashboard/admin/Profile";
@@ -1136,6 +1268,12 @@ import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import TuitionDetails from "../Pages/TuitionDetails";
 
+// ✅ NEW IMPORT (404 Page)
+import Error404 from "../Pages/Error404";
+
+// ✅ OPTIONAL (If you want to use Loading globally later)
+import Loading from "../Pages/Loading";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -1149,6 +1287,9 @@ export const router = createBrowserRouter([
       { path: "contact", element: <Contact /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
+
+      // ✅ 404 Route Added (Very Important)
+      { path: "*", element: <Error404 /> },
     ],
   },
   {
@@ -1172,20 +1313,20 @@ export const router = createBrowserRouter([
           { path: "my-tuitions", element: <MyTuitions /> },
           { path: "post-tuition", element: <PostTuition /> },
           { path: "applied-tutors", element: <AppliedTutors /> },
-          
-          /* 🔥 Payment Success Nested Route */
-          { 
-            path: "payments", 
+
+          {
+            path: "payments",
             children: [
-                { index: true, element: <Payments /> }, 
-                { path: "success", element: <PaymentSuccess /> } 
+              { index: true, element: <Payments /> },
+              { path: "success", element: <PaymentSuccess /> }
             ]
-          }, 
-          
-          { path: "payment-process", element: <Payment /> }, 
+          },
+
+          { path: "payment-process", element: <Payment /> },
           { path: "profile", element: <StudentProfile /> },
         ],
       },
+
       // 🔥 Tutor Routes
       {
         path: "tutor",
@@ -1202,6 +1343,7 @@ export const router = createBrowserRouter([
           { path: "profile", element: <TutorProfile /> },
         ],
       },
+
       // 🔥 Admin Routes
       {
         path: "admin",

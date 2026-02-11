@@ -671,6 +671,130 @@
 
 // // export default DashboardLayout;
 
+import { Outlet, Link, Navigate, useLocation, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import useAuth from "../Hooks/useAuth";
+
+const DashboardLayout = () => {
+  const { user, loading } = useAuth();
+  const location = useLocation();
+  const [role, setRole] = useState(user?.role || localStorage.getItem("role"));
+
+  // 🔥 Sync role from backend if missing or updated (admin change)
+  useEffect(() => {
+    if (user?.email) {
+      fetch(`http://localhost:5000/users/role/${user.email}`, { credentials: "include" })
+        .then(res => res.json())
+        .then(data => {
+          if (data.role) {
+            setRole(data.role);
+            localStorage.setItem("role", data.role);
+          }
+        });
+    }
+  }, [user]);
+
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <span className="loading loading-spinner loading-lg text-emerald-600"></span>
+    </div>
+  );
+
+  if (!user) return <Navigate to="/login" replace />;
+
+  // Role-based links configuration
+  const linksByRole = {
+    student: [
+      { name: "My Tuitions", path: "my-tuitions" },
+      { name: "Post Tuition", path: "post-tuition" },
+      { name: "Applied Tutors", path: "applied-tutors" },
+    ],
+    tutor: [
+      { name: "My Applications", path: "my-applications" },
+      { name: "Ongoing Tuitions", path: "ongoing-tuitions" },
+      { name: "Revenue", path: "revenue" },
+    ],
+    admin: [
+      { name: "User Management", path: "user-management" },
+      { name: "Tuition Management", path: "tuition-management" },
+      { name: "Reports", path: "reports" },
+    ],
+  };
+
+  const menuItems = linksByRole[role] || [];
+
+  // 🔥 Default redirection based on role
+  if (location.pathname === "/dashboard" || location.pathname === "/dashboard/") {
+    const defaultPaths = {
+      student: "student/my-tuitions",
+      tutor: "tutor/my-applications",
+      admin: "admin/user-management"
+    };
+    return <Navigate to={`/dashboard/${defaultPaths[role]}`} replace />;
+  }
+
+  return (
+    <div className="flex min-h-screen bg-base-200">
+      {/* Sidebar */}
+      <aside className="w-64 bg-base-100 p-6 shadow-xl hidden md:block border-r border-base-300">
+        <div className="mb-10 text-center">
+          <Link to="/" className="text-2xl font-bold text-emerald-600 italic">
+            eTuition<span className="text-secondary">Bd</span>
+          </Link>
+          <div className="mt-4 p-2 bg-emerald-50 rounded-lg">
+            <p className="text-xs font-bold text-emerald-700 uppercase tracking-widest">
+              {role} Panel
+            </p>
+          </div>
+        </div>
+
+        <nav>
+          <ul className="space-y-2">
+            {menuItems.map((item) => (
+              <li key={item.path}>
+                <NavLink
+                  to={`/dashboard/${role}/${item.path}`}
+                  className={({ isActive }) =>
+                    `block px-4 py-3 rounded-lg font-medium transition-all ${
+                      isActive
+                        ? "bg-emerald-600 text-white shadow-md"
+                        : "text-gray-600 hover:bg-emerald-50 hover:text-emerald-600"
+                    }`
+                  }
+                >
+                  {item.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Home Button */}
+        <div className="mt-10 pt-6 border-t border-gray-100">
+          <Link to="/" className="text-sm text-gray-500 hover:text-emerald-600 flex items-center gap-2">
+            ← Back to Home
+          </Link>
+        </div>
+      </aside>
+
+      {/* Main content */}
+      <main className="flex-1 p-8 overflow-y-auto">
+        <header className="mb-8 flex justify-between items-center bg-white p-4 rounded-xl shadow-sm md:hidden">
+          <h2 className="font-bold text-emerald-600 uppercase">{role} Dashboard</h2>
+        </header>
+
+        <div className="max-w-6xl mx-auto">
+          <Outlet />
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default DashboardLayout;
+
+
+
 // import { Outlet, Link, Navigate, useLocation, NavLink } from "react-router-dom";
 // import { useEffect, useState } from "react";
 // import useAuth from "../Hooks/useAuth";
@@ -678,31 +802,38 @@
 // const DashboardLayout = () => {
 //   const { user, loading } = useAuth();
 //   const location = useLocation();
-//   const [role, setRole] = useState(user?.role || localStorage.getItem("role"));
+//   const [role, setRole] = useState(null);
+//   const [roleLoading, setRoleLoading] = useState(true);
 
-//   // 🔥 Sync role from backend if missing or updated (admin change)
+//   // 🔥 ALWAYS sync role from DB (admin change handle)
 //   useEffect(() => {
 //     if (user?.email) {
-//       fetch(`http://localhost:5000/users/role/${user.email}`, { credentials: "include" })
+//       fetch(`http://localhost:5000/users/role/${user.email}`, {
+//         credentials: "include",
+//       })
 //         .then(res => res.json())
 //         .then(data => {
-//           if (data.role) {
+//           if (data?.role) {
 //             setRole(data.role);
 //             localStorage.setItem("role", data.role);
 //           }
-//         });
+//           setRoleLoading(false);
+//         })
+//         .catch(() => setRoleLoading(false));
 //     }
 //   }, [user]);
 
-//   if (loading) return (
-//     <div className="min-h-screen flex items-center justify-center">
-//       <span className="loading loading-spinner loading-lg text-emerald-600"></span>
-//     </div>
-//   );
+//   if (loading || roleLoading) {
+//     return (
+//       <div className="min-h-screen flex items-center justify-center">
+//         <span className="loading loading-spinner loading-lg text-emerald-600"></span>
+//       </div>
+//     );
+//   }
 
 //   if (!user) return <Navigate to="/login" replace />;
 
-//   // Role-based links configuration
+//   // ===== Role based sidebar links =====
 //   const linksByRole = {
 //     student: [
 //       { name: "My Tuitions", path: "my-tuitions" },
@@ -727,14 +858,14 @@
 
 //   const menuItems = linksByRole[role] || [];
 
-//   // 🔥 Default redirection based on role
+//   // 🔥 Auto redirect based on role
 //   if (location.pathname === "/dashboard" || location.pathname === "/dashboard/") {
-//     const defaultPaths = {
-//       student: "student/my-tuitions",
-//       tutor: "tutor/my-applications",
-//       admin: "admin/user-management"
+//     const defaultRoute = {
+//       student: "/dashboard/student/my-tuitions",
+//       tutor: "/dashboard/tutor/my-applications",
+//       admin: "/dashboard/admin/user-management",
 //     };
-//     return <Navigate to={`/dashboard/${defaultPaths[role]}`} replace />;
+//     return <Navigate to={defaultRoute[role]} replace />;
 //   }
 
 //   return (
@@ -754,7 +885,7 @@
 
 //         <nav>
 //           <ul className="space-y-2">
-//             {menuItems.map((item) => (
+//             {menuItems.map(item => (
 //               <li key={item.path}>
 //                 <NavLink
 //                   to={`/dashboard/${role}/${item.path}`}
@@ -773,9 +904,11 @@
 //           </ul>
 //         </nav>
 
-//         {/* Home Button */}
 //         <div className="mt-10 pt-6 border-t border-gray-100">
-//           <Link to="/" className="text-sm text-gray-500 hover:text-emerald-600 flex items-center gap-2">
+//           <Link
+//             to="/"
+//             className="text-sm text-gray-500 hover:text-emerald-600 flex items-center gap-2"
+//           >
 //             ← Back to Home
 //           </Link>
 //         </div>
@@ -784,7 +917,9 @@
 //       {/* Main content */}
 //       <main className="flex-1 p-8 overflow-y-auto">
 //         <header className="mb-8 flex justify-between items-center bg-white p-4 rounded-xl shadow-sm md:hidden">
-//           <h2 className="font-bold text-emerald-600 uppercase">{role} Dashboard</h2>
+//           <h2 className="font-bold text-emerald-600 uppercase">
+//             {role} Dashboard
+//           </h2>
 //         </header>
 
 //         <div className="max-w-6xl mx-auto">
@@ -796,142 +931,3 @@
 // };
 
 // export default DashboardLayout;
-
-
-
-import { Outlet, Link, Navigate, useLocation, NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
-import useAuth from "../Hooks/useAuth";
-
-const DashboardLayout = () => {
-  const { user, loading } = useAuth();
-  const location = useLocation();
-  const [role, setRole] = useState(null);
-  const [roleLoading, setRoleLoading] = useState(true);
-
-  // 🔥 ALWAYS sync role from DB (admin change handle)
-  useEffect(() => {
-    if (user?.email) {
-      fetch(`http://localhost:5000/users/role/${user.email}`, {
-        credentials: "include",
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data?.role) {
-            setRole(data.role);
-            localStorage.setItem("role", data.role);
-          }
-          setRoleLoading(false);
-        })
-        .catch(() => setRoleLoading(false));
-    }
-  }, [user]);
-
-  if (loading || roleLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <span className="loading loading-spinner loading-lg text-emerald-600"></span>
-      </div>
-    );
-  }
-
-  if (!user) return <Navigate to="/login" replace />;
-
-  // ===== Role based sidebar links =====
-  const linksByRole = {
-    student: [
-      { name: "My Tuitions", path: "my-tuitions" },
-      { name: "Post Tuition", path: "post-tuition" },
-      { name: "Applied Tutors", path: "applied-tutors" },
-      { name: "Payments", path: "payments" },
-      { name: "Profile", path: "profile" },
-    ],
-    tutor: [
-      { name: "My Applications", path: "my-applications" },
-      { name: "Ongoing Tuitions", path: "ongoing-tuitions" },
-      { name: "Revenue", path: "revenue" },
-      { name: "Profile", path: "profile" },
-    ],
-    admin: [
-      { name: "User Management", path: "user-management" },
-      { name: "Tuition Management", path: "tuition-management" },
-      { name: "Reports", path: "reports" },
-      { name: "Profile", path: "profile" },
-    ],
-  };
-
-  const menuItems = linksByRole[role] || [];
-
-  // 🔥 Auto redirect based on role
-  if (location.pathname === "/dashboard" || location.pathname === "/dashboard/") {
-    const defaultRoute = {
-      student: "/dashboard/student/my-tuitions",
-      tutor: "/dashboard/tutor/my-applications",
-      admin: "/dashboard/admin/user-management",
-    };
-    return <Navigate to={defaultRoute[role]} replace />;
-  }
-
-  return (
-    <div className="flex min-h-screen bg-base-200">
-      {/* Sidebar */}
-      <aside className="w-64 bg-base-100 p-6 shadow-xl hidden md:block border-r border-base-300">
-        <div className="mb-10 text-center">
-          <Link to="/" className="text-2xl font-bold text-emerald-600 italic">
-            eTuition<span className="text-secondary">Bd</span>
-          </Link>
-          <div className="mt-4 p-2 bg-emerald-50 rounded-lg">
-            <p className="text-xs font-bold text-emerald-700 uppercase tracking-widest">
-              {role} Panel
-            </p>
-          </div>
-        </div>
-
-        <nav>
-          <ul className="space-y-2">
-            {menuItems.map(item => (
-              <li key={item.path}>
-                <NavLink
-                  to={`/dashboard/${role}/${item.path}`}
-                  className={({ isActive }) =>
-                    `block px-4 py-3 rounded-lg font-medium transition-all ${
-                      isActive
-                        ? "bg-emerald-600 text-white shadow-md"
-                        : "text-gray-600 hover:bg-emerald-50 hover:text-emerald-600"
-                    }`
-                  }
-                >
-                  {item.name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="mt-10 pt-6 border-t border-gray-100">
-          <Link
-            to="/"
-            className="text-sm text-gray-500 hover:text-emerald-600 flex items-center gap-2"
-          >
-            ← Back to Home
-          </Link>
-        </div>
-      </aside>
-
-      {/* Main content */}
-      <main className="flex-1 p-8 overflow-y-auto">
-        <header className="mb-8 flex justify-between items-center bg-white p-4 rounded-xl shadow-sm md:hidden">
-          <h2 className="font-bold text-emerald-600 uppercase">
-            {role} Dashboard
-          </h2>
-        </header>
-
-        <div className="max-w-6xl mx-auto">
-          <Outlet />
-        </div>
-      </main>
-    </div>
-  );
-};
-
-export default DashboardLayout;

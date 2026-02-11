@@ -387,7 +387,7 @@ const About = () => {
             <div className="w-16 h-16 bg-blue-100 rounded-3xl flex items-center justify-center text-blue-600 text-3xl mb-8">
               <FaHandsHelping />
             </div>
-            <h2 className="text-4xl font-black text-slate-900 mb-6 tracking-tight">Our <span className="text-blue-600">Mission</span></h2>
+            <h2 className="text-4xl font-black text-slate-900 mb-6 tracking-tight">Our <span className="text-emerald-600">Mission</span></h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-6">
               We are on a mission to empower 1 million students by 2030 through manual verification and secure, seamless connections with expert mentors.
             </p>

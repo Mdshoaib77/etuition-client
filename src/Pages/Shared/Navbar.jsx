@@ -399,17 +399,173 @@
 
 
 
+
+
+
+// import { Link, useNavigate, NavLink } from "react-router-dom";
+// import { useState, useEffect } from "react";
+// import useAuth from "../../Hooks/useAuth";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { Menu, X } from "lucide-react"; // আধুনিক আইকন
+// import logo from "../../assets/Logo.png"
+
+// const Navbar = () => {
+//   const { user, loading, logoutUser } = useAuth();
+//   const navigate = useNavigate();
+//   const [role, setRole] = useState(user?.role || "");
+//   const [isOpen, setIsOpen] = useState(false); // মোবাইল মেনু স্টেট
+
+//   useEffect(() => {
+//     if (user?.role) setRole(user.role);
+//     else {
+//       const storedRole = localStorage.getItem("role");
+//       if (storedRole) setRole(storedRole);
+//     }
+//   }, [user]);
+
+//   const handleLogout = async () => {
+//     await logoutUser();
+//     localStorage.removeItem("role");
+//     navigate("/login");
+//   };
+
+//   const toggleMenu = () => setIsOpen(!isOpen);
+
+//   const navLinks = (
+//     <>
+//       <li><NavLink to="/" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>Home</NavLink></li>
+//       <li><NavLink to="/tuitions" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>Tuitions</NavLink></li>
+//       <li><NavLink to="/tutors" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>Tutors</NavLink></li>
+//       <li><NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>About</NavLink></li>
+//       <li><NavLink to="/contact" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>Contact</NavLink></li>
+//     </>
+//   );
+
+//   const dashboardLinks = () => {
+//     if (role === "student") return [
+//       { name: "My tuitions", path: "/dashboard/student/my-tuitions" },
+//       { name: "Post Tuition", path: "/dashboard/student/post-tuition" },
+//       { name: "Applied Tuitions", path: "/dashboard/student/applied-tutors" },
+//     ];
+//     if (role === "tutor") return [
+//       { name: "My Applications", path: "/dashboard/tutor/my-applications" },
+//       { name: "Ongoing Tuitions", path: "/dashboard/tutor/ongoing-tuitions" },
+//       { name: "Revenue", path: "/dashboard/tutor/revenue" },
+//     ];
+//     if (role === "admin") return [
+//       { name: "User Management", path: "/dashboard/admin/user-management" },
+//       { name: "Tuition Management", path: "/dashboard/admin/tuition-management" },
+//       { name: "Reports", path: "/dashboard/admin/reports" },
+//     ];
+//     return [];
+//   };
+
+//   return (
+//     <nav className="bg-base-100 shadow-md sticky top-0 z-[1000] border-b border-base-200">
+//       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-12 h-20">
+        
+//         {/* Mobile Menu Button - LEFT SIDE */}
+//         <div className="lg:hidden">
+//           <button onClick={toggleMenu} className="p-2 text-emerald-600 focus:outline-none">
+//             <Menu size={28} />
+//           </button>
+//         </div>
+
+//         {/* Logo */}
+//         <Link to="/" className="text-2xl md:text-3xl font-bold text-emerald-600 italic flex-1 lg:flex-none text-center lg:text-left">
+//           eTuition<span className="text-blue-900">Bd</span>
+//         </Link>
+
+//         {/* Desktop Links */}
+//         <div className="hidden lg:flex">
+//           <ul className="menu menu-horizontal px-1 gap-8 font-semibold text-lg">{navLinks}</ul>
+//         </div>
+
+//         {/* Profile / Auth */}
+//         <div className="flex items-center gap-4">
+//           {loading ? (
+//             <span className="loading loading-spinner loading-md text-emerald-600"></span>
+//           ) : !user?.email ? (
+//             <Link to="/login" className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 md:px-8 py-2 md:py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+//               Login
+//             </Link>
+//           ) : (
+//             <div className="dropdown dropdown-end">
+//               <label tabIndex={0} className="btn btn-ghost btn-circle avatar online">
+//                 <div className="w-10 rounded-full ring ring-emerald-500 ring-offset-base-100 ring-offset-2">
+//                   <img src={user?.photoURL || "https://i.ibb.co/9gK4k2P/avatar.png"} alt="Profile" referrerPolicy="no-referrer" />
+//                 </div>
+//               </label>
+//               <ul tabIndex={0} className="dropdown-content menu p-3 shadow-xl bg-base-100 rounded-box w-60 mt-4 border border-base-200">
+//                 <li className="menu-title px-4 py-2 text-emerald-600 font-bold border-b border-base-100 mb-2">{user?.displayName || "User"}</li>
+//                 {dashboardLinks().map(item => (
+//                   <li key={item.path}><Link to={item.path} className="py-3 hover:bg-emerald-50 hover:text-emerald-600">{item.name}</Link></li>
+//                 ))}
+//                 <div className="divider my-1"></div>
+//                 <li><button onClick={handleLogout} className="text-red-500 hover:bg-red-50 py-3 font-semibold">Logout</button></li>
+//               </ul>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+
+//       {/* --- MOBILE SIDEBAR DRAWER --- */}
+//       <AnimatePresence>
+//         {isOpen && (
+//           <>
+//             {/* Backdrop */}
+//             <motion.div
+//               initial={{ opacity: 0 }}
+//               animate={{ opacity: 1 }}
+//               exit={{ opacity: 0 }}
+//               onClick={toggleMenu}
+//               className="fixed inset-0 bg-black/50 z-[1100] lg:hidden backdrop-blur-sm"
+//             />
+
+//             {/* Side Menu */}
+//             <motion.div
+//               initial={{ x: "-100%" }}
+//               animate={{ x: 0 }}
+//               exit={{ x: "-100%" }}
+//               transition={{ type: "spring", damping: 25, stiffness: 200 }}
+//               className="fixed top-0 left-0 h-full w-[70%] sm:w-[50%] bg-base-100 z-[1200] lg:hidden shadow-2xl p-6"
+//             >
+//               <div className="flex justify-between items-center mb-10">
+//                 <span className="text-2xl font-bold text-emerald-600 italic">Menu</span>
+//                 <button onClick={toggleMenu} className="p-2 bg-emerald-50 text-emerald-600 rounded-full hover:bg-emerald-100 transition-colors">
+//                   <X size={24} />
+//                 </button>
+//               </div>
+
+//               <ul className="flex flex-col gap-6 font-semibold text-xl list-none">
+//                 {navLinks}
+//               </ul>
+
+//               <div className="mt-10 border-t pt-6">
+//                  <p className="text-xs text-gray-400 text-center italic">© 2026 eTuitionBd - Best Tutor Platform</p>
+//               </div>
+//             </motion.div>
+//           </>
+//         )}
+//       </AnimatePresence>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react"; // আধুনিক আইকন
+import { Menu, X } from "lucide-react"; 
+import logo from "../../assets/Logo.png";
 
 const Navbar = () => {
   const { user, loading, logoutUser } = useAuth();
   const navigate = useNavigate();
   const [role, setRole] = useState(user?.role || "");
-  const [isOpen, setIsOpen] = useState(false); // মোবাইল মেনু স্টেট
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (user?.role) setRole(user.role);
@@ -429,11 +585,11 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <li><NavLink to="/" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>Home</NavLink></li>
-      <li><NavLink to="/tuitions" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>Tuitions</NavLink></li>
-      <li><NavLink to="/tutors" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>Tutors</NavLink></li>
-      <li><NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>About</NavLink></li>
-      <li><NavLink to="/contact" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold" : "hover:text-emerald-500 transition-colors"}>Contact</NavLink></li>
+      <li><NavLink to="/" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold border-b-2 border-emerald-600 pb-1" : "hover:text-emerald-500 transition-colors"}>Home</NavLink></li>
+      <li><NavLink to="/tuitions" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold border-b-2 border-emerald-600 pb-1" : "hover:text-emerald-500 transition-colors"}>Tuitions</NavLink></li>
+      <li><NavLink to="/tutors" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold border-b-2 border-emerald-600 pb-1" : "hover:text-emerald-500 transition-colors"}>Tutors</NavLink></li>
+      <li><NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold border-b-2 border-emerald-600 pb-1" : "hover:text-emerald-500 transition-colors"}>About</NavLink></li>
+      <li><NavLink to="/contact" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "text-emerald-600 font-bold border-b-2 border-emerald-600 pb-1" : "hover:text-emerald-500 transition-colors"}>Contact</NavLink></li>
     </>
   );
 
@@ -442,7 +598,6 @@ const Navbar = () => {
       { name: "My tuitions", path: "/dashboard/student/my-tuitions" },
       { name: "Post Tuition", path: "/dashboard/student/post-tuition" },
       { name: "Applied Tuitions", path: "/dashboard/student/applied-tutors" },
-      { name: "Profile", path: "/dashboard/student/profile" },
     ];
     if (role === "tutor") return [
       { name: "My Applications", path: "/dashboard/tutor/my-applications" },
@@ -458,48 +613,59 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-base-100 shadow-md sticky top-0 z-[1000] border-b border-base-200">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-12 h-20">
+    <nav className="bg-white shadow-sm sticky top-0 z-[1000] border-b border-gray-100">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-0 h-20">
         
-        {/* Mobile Menu Button - LEFT SIDE */}
-        <div className="lg:hidden">
-          <button onClick={toggleMenu} className="p-2 text-emerald-600 focus:outline-none">
+        {/* Mobile Menu Button - Left Aligned on Mobile */}
+        <div className="flex-1 lg:hidden">
+          <button onClick={toggleMenu} className="p-2 text-emerald-600 focus:outline-none hover:bg-emerald-50 rounded-lg transition-colors">
             <Menu size={28} />
           </button>
         </div>
 
-        {/* Logo */}
-        <Link to="/" className="text-2xl md:text-3xl font-bold text-emerald-600 italic flex-1 lg:flex-none text-center lg:text-left">
-          eTuition<span className="text-secondary">Bd</span>
-        </Link>
-
-        {/* Desktop Links */}
-        <div className="hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-8 font-semibold text-lg">{navLinks}</ul>
+        {/* LOGO SECTION - Direct Image Used */}
+        <div className="flex-none lg:flex-1 flex justify-center lg:justify-start">
+          <Link to="/" className="transition-transform active:scale-95">
+            <img 
+              src={logo} 
+              alt="eTuitionBd Logo" 
+              className="h-30 md:h-36 w-auto object-contain" 
+            />
+          </Link>
         </div>
 
-        {/* Profile / Auth */}
-        <div className="flex items-center gap-4">
+        {/* DESKTOP LINKS - Perfectly Centered */}
+        <div className="hidden lg:flex flex-[2] justify-center">
+          <ul className="flex items-center gap-8 font-semibold text-[17px] text-gray-700">
+            {navLinks}
+          </ul>
+        </div>
+
+        {/* PROFILE / AUTH SECTION - Right Aligned */}
+        <div className="flex-1 flex justify-end items-center gap-4">
           {loading ? (
             <span className="loading loading-spinner loading-md text-emerald-600"></span>
           ) : !user?.email ? (
-            <Link to="/login" className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 md:px-8 py-2 md:py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+            <Link to="/login" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-bold transition-all shadow-md active:scale-95 text-sm md:text-base">
               Login
             </Link>
           ) : (
             <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar online">
-                <div className="w-10 rounded-full ring ring-emerald-500 ring-offset-base-100 ring-offset-2">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar online m-0 border-2 border-emerald-100 hover:border-emerald-500 transition-all">
+                <div className="w-10 rounded-full">
                   <img src={user?.photoURL || "https://i.ibb.co/9gK4k2P/avatar.png"} alt="Profile" referrerPolicy="no-referrer" />
                 </div>
               </label>
-              <ul tabIndex={0} className="dropdown-content menu p-3 shadow-xl bg-base-100 rounded-box w-60 mt-4 border border-base-200">
-                <li className="menu-title px-4 py-2 text-emerald-600 font-bold border-b border-base-100 mb-2">{user?.displayName || "User"}</li>
+              <ul tabIndex={0} className="dropdown-content menu p-3 shadow-2xl bg-base-100 rounded-2xl w-64 mt-4 border border-base-200">
+                <li className="menu-title px-4 py-3 text-emerald-600 font-bold border-b border-gray-50 mb-2">
+                  <span className="text-xs font-normal text-gray-400 block">Welcome back,</span>
+                  {user?.displayName || "User"}
+                </li>
                 {dashboardLinks().map(item => (
-                  <li key={item.path}><Link to={item.path} className="py-3 hover:bg-emerald-50 hover:text-emerald-600">{item.name}</Link></li>
+                  <li key={item.path}><Link to={item.path} className="py-3 px-4 hover:bg-emerald-50 hover:text-emerald-600 font-medium transition-colors">{item.name}</Link></li>
                 ))}
-                <div className="divider my-1"></div>
-                <li><button onClick={handleLogout} className="text-red-500 hover:bg-red-50 py-3 font-semibold">Logout</button></li>
+                <div className="divider my-1 opacity-50"></div>
+                <li><button onClick={handleLogout} className="text-red-500 hover:bg-red-50 py-3 px-4 font-bold transition-colors">Logout</button></li>
               </ul>
             </div>
           )}
@@ -510,36 +676,36 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={toggleMenu}
-              className="fixed inset-0 bg-black/50 z-[1100] lg:hidden backdrop-blur-sm"
+              className="fixed inset-0 bg-slate-900/40 z-[1100] lg:hidden backdrop-blur-md"
             />
 
-            {/* Side Menu */}
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 left-0 h-full w-[70%] sm:w-[50%] bg-base-100 z-[1200] lg:hidden shadow-2xl p-6"
+              className="fixed top-0 left-0 h-full w-[280px] bg-white z-[1200] lg:hidden shadow-2xl flex flex-col"
             >
-              <div className="flex justify-between items-center mb-10">
-                <span className="text-2xl font-bold text-emerald-600 italic">Menu</span>
+              <div className="flex justify-between items-center p-6 border-b border-gray-100">
+                <img src={logo} alt="Logo" className="h-20 w-auto" />
                 <button onClick={toggleMenu} className="p-2 bg-emerald-50 text-emerald-600 rounded-full hover:bg-emerald-100 transition-colors">
                   <X size={24} />
                 </button>
               </div>
 
-              <ul className="flex flex-col gap-6 font-semibold text-xl list-none">
+              <ul className="flex flex-col gap-2 p-6 font-semibold text-lg list-none overflow-y-auto flex-1">
                 {navLinks}
               </ul>
 
-              <div className="mt-10 border-t pt-6">
-                 <p className="text-xs text-gray-400 text-center italic">© 2026 eTuitionBd - Best Tutor Platform</p>
+              <div className="p-6 border-t border-gray-100 bg-gray-50 text-center">
+                 <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold italic">
+                   © 2026 eTuitionBd
+                 </p>
               </div>
             </motion.div>
           </>
