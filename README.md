@@ -74,7 +74,7 @@ This project reduces friction in finding **qualified tutors** and ensures **secu
 
 **Environment Variables**
 - **Firebase keys**  
-- **MongoDB credentials**  
-- **Backend URL (`https://etuition-server-insahallah.vercel.app/`)**  
+- **MongoDB credentials**
+- **Backend URL: [https://etuition-server-insahallah.vercel.app/](https://etuition-server-insahallah.vercel.app/)**
 
 ---
