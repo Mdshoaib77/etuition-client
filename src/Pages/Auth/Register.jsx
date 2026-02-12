@@ -532,7 +532,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
-const backendUrl = "http://localhost:5000";
+const backendUrl = import.meta.env.VITE_API_URL;
 
 const Register = () => {
   const { registerUser, googleLogin } = useAuth();
