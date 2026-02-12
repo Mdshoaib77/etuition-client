@@ -1,16 +1,80 @@
-# React + Vite
+# **eTuitionBd – Tuition Management Platform**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live URL:** [https://etuitionplatform.netlify.app/](https://etuitionplatform.netlify.app/)  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **🎯 Purpose**
 
-## React Compiler
+**eTuitionBd** is a **complete Tuition Management System** that connects **students, tutors, and admins**. It enables:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Students** to post tuition requirements  
+- **Tutors** to browse and apply for tuitions  
+- **Admins** to monitor, approve/reject posts, and manage users  
+- **Transparent payments** and digital workflow management  
 
-## Expanding the ESLint configuration
+This project reduces friction in finding **qualified tutors** and ensures **secure, automated, and trackable tuition management**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## **✨ Features**
+
+### **Authentication**
+- **Student & Tutor registration**  
+- **Email/password login + Google login**  
+- **JWT-based role verification**  
+- **Protected routes** for dashboards  
+
+### **Student Dashboard**
+- **Post, edit, and delete tuition posts**  
+- **View tutor applications**  
+- **Approve/reject applications**  
+- **Stripe payment integration**  
+- **Payment history**  
+- **Profile management**  
+
+### **Tutor Dashboard**
+- **Apply to tuition posts**  
+- **Track application status**  
+- **View ongoing tuitions**  
+- **Revenue history**  
+- **Profile management**  
+
+### **Admin Dashboard**
+- **Manage users** (update info, roles, delete)  
+- **Moderate tuition posts** (approve/reject)  
+- **Platform analytics & reports**  
+
+### **General Features**
+- **Dynamic Home page:** latest tuitions & tutors  
+- **Framer Motion animations**  
+- **Fully responsive layout** (mobile/tablet/desktop)  
+- **Navbar & footer** with polished design  
+- **Search, sort, and filter tuitions**  
+- **Loading spinner and friendly 404 page**  
+
+---
+
+## **🛠 Packages / Technologies Used**
+
+**Frontend**
+- **React.js**, **React Router DOM**  
+- **TailwindCSS**, **DaisyUI**  
+- **Framer Motion**  
+- **SweetAlert2**  
+- **Firebase Authentication**  
+
+**Backend**
+- **Node.js**, **Express.js**  
+- **MongoDB Atlas**  
+- **Stripe (Payments)**  
+- **JWT Authentication**  
+- **Cookie Parser**  
+- **CORS**  
+
+**Environment Variables**
+- **Firebase keys**  
+- **MongoDB credentials**  
+- **Backend URL (`https://etuition-server-insahallah.vercel.app/`)**  
+
+---
