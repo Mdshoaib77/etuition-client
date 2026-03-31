@@ -1,6 +1,6 @@
 # **eTuitionBd – Tuition Management Platform**
 
-**Live URL:** [https://etuitionplatform.netlify.app/](https://etuitionplatform.netlify.app/)  
+**Live URL:** [https://etuitionbd-portal.netlify.app/](https://etuitionbd-portal.netlify.app/)  
 
 ---
 
